@@ -1,0 +1,422 @@
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: E:\Keil_v5\C51\BIN\A51.EXE C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51 NOMOD51 SET(SMALL) DEBU
+                      G PRINT(.\DisplayLed.lst) OBJECT(.\DisplayLed.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     ;#include <at89c5131.h> 
+                       3     ;NAME DisplayLed
+                       4     
+                       5     ;***************************************************************************
+                       6     ; DISCIPLINA MICROCONTROLADORES - PROF. SERGIO MORIBE/ RAFAEL E. DE GOES        
+                       7     ; ROTINAS TRATAMENTO DISPLAY LCD (DISPLAY CRISTAL LIQUIDO 16X2) PARA 
+                       8     ;       PLACA VERMELHA 1SEM2013 COM RW (READ/WRITE)
+                       9     ; ARQUIVO: LCD_RW_P51_2014_2
+                      10     ; VERSAO: 1.0 - 2010/10/22
+                      11     ;         1.1 - 2014/10/24 - CORRIGIDO COMENT?RIOS ROTINA ATRASO_MS
+                      12     ;                          E CORRIGIDO ROTINA DE INICIALIZA??O 
+                      13     ; DESENVOLVIDO PARA PLACA P51USB VERMELHA 1SEM2013 COM RW (READ/WRITE)
+                      14     ;***************************************************************************
+                      15     
+                      16     ;***************************************************************************
+                      17     ; TABELA DE EQUATES DO PROGRAMA
+                      18     ;***************************************************************************
+                      19     
+                      20     RS              EQU     P2.5            ;COMANDO RS LCD
+*** _________________________________________________^
+*** ERROR #A17 IN 20 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 20): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      21     E_LCD   EQU     P2.7            ;COMANDO E (ENABLE) LCD
+*** _________________________________________^
+*** ERROR #A17 IN 21 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 21): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      22     RW              EQU     P2.6                    ;READ/WRITE
+*** _________________________________________________^
+*** ERROR #A17 IN 22 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 22): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      23     BUSYF   EQU     P0.7                    ;BUSY FLAG
+*** _________________________________________^
+*** ERROR #A17 IN 23 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 23): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+  0040                24     FLAG    EQU     40h
+  0050                25     CONT    EQU     50h
+  0042                26     TECLA   EQU 42h
+                      27             
+                      28     ;LEDS DA PLACA
+                      29     LEDVD   EQU     P3.6
+*** _________________________________________^
+*** ERROR #A17 IN 29 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 29): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      30     LEDAM   EQU     P3.7
+*** _________________________________________^
+*** ERROR #A17 IN 30 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 30): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      31     LEDVM   EQU     P1.4
+*** _________________________________________^
+*** ERROR #A17 IN 31 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 31): INVALID BYTE BASE IN BIT ADDRESS EXPRESSION
+                      32             
+                      33     
+                      34     
+                      35     ;PROGRAMA EXEMPLO PARA ACESSO AO DISPLAY LCD UTILIZANDO PLACA P51
+                      36     
+                      37     ;       ORG             2000H
+                      38     ;       CALL    INIDISP                 ;INICIALIZA DISPLAY
+                      39     ;       MOV     DPTR,#STR_UTFPR         ;STRING DA PRIMEIRA LINHA
+                      40     ;       CALL    ESC_STR1                ;ESCREVE NA PRIMEIRA LINHA
+                      41     ;       MOV     DPTR,#STR_MICROC        ;STRING DA SEGUNDA LINHA
+                      42     ;       CALL    ESC_STR2                ;ESCREVE NA SEGUNDA LINHA
+                      43     ;       JMP     $ 
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     2
+
+                      44     
+                      45     ; STRINGS TERMINADAS COM '00H'
+                      46     ;STR_UTFPR:
+                      47      ;      DB      '     UTFPR      ',00H
+                      48     ;STR_MICROC:
+                      49     ;       DB      'MICROCONTROLADOR',00H
+                      50     
+                      51     ;***************************************************************************
+                      52     ;ROTINAS DE TRATAMENTO DO DISPLAY DE CRISTAL LIQUIDO 16X2
+                      53     ;***************************************************************************
+                      54     
+                      55     ;***************************************************************************
+                      56     ;NOME: INIDISP
+                      57     ;DESCRICAO: ROTINA DE INICIALIZACAO DO DISPLAY LCD 2x16
+                      58     ;               PROGRAMA CARACTER 5x7, LIMPA DISPLAY E POSICIONA (0,0)
+                      59     ;ENTRADA: -
+                      60     ;SAIDA: -
+                      61     ;ALTERA: R0,R2
+                      62     
+0000                  63     INIDISP:                       
+0000 7A0F             64         MOV     R2,#15          ;ESPERA 15ms
+0002 11AF             65             CALL    ATRASO_MS
+0004 7838             66             MOV     R0,#38H         ;UTILIZACAO: 8 BITS, 2 LINHAS, 5x7
+0006 1121             67         CALL    ESCINST         ;ENVIA A INSTRUCAO
+0008 7A05             68             MOV     R2,#05          ;ESPERA 5ms
+000A 11AF             69             CALL    ATRASO_MS
+000C 7838             70         MOV     R0,#38H         ;UTILIZACAO: 8 BITS, 2 LINHAS, 5x7
+000E 1121             71         CALL    ESCINST         ;ENVIA A INSTRUCAO
+0010 7A01             72             MOV     R2,#01          ;ESPERA 1ms
+0012 11AF             73             CALL    ATRASO_MS
+                      74             
+0014 7806             75             MOV     R0,#06H         ;INSTRUCAO DE MODO DE OPERACAO
+0016 1121             76             CALL    ESCINST         ;ENVIA A INSTRUCAO
+0018 780C             77             MOV     R0,#0CH         ;INSTRUCAO DE CONTROLE ATIVO/INATIVO
+001A 1121             78             CALL    ESCINST         ;ENVIA A INSTRUCAO
+001C 7801             79             MOV     R0,#01H         ;INSTRUCAO DE LIMPEZA DO DISPLAY
+001E 1121             80             CALL    ESCINST         ;ENVIA A INSTRUCAO
+0020 22               81             RET
+                      82                     
+                      83     
+                      84     
+                      85     
+                      86     ;***************************************************************************
+                      87     ;NOME: ESCINST
+                      88     ;DESCRICAO: ROTINA QUE ESCREVE INSTRUCAO PARA O DISPLAY E ESPERA DESOCUPAR
+                      89     ;P.ENTRADA: R0 = INSTRUCAO A SER ESCRITA NO MODULO DISPLAY
+                      90     ;P.SAIDA: -
+                      91     ;ALTERA: R0
+0021                  92     ESCINST:  
+0021 C206             93                 CLR RW              ;MODO ESCRITA NO LCD
+0023 C205             94             CLR     RS              ;RS  = 0 (SELECIONA REG. DE INSTRUCOES)
+0025 D207             95             SETB    E_LCD           ;E = 1 (HABILITA LCD)
+0027                  96             MOV     P0,R0           ;INSTRUCAO A SER ESCRITA
+*** _________________________________________^
+*** ERROR #A45 IN 96 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 96): UNDEFINED SYMBOL (PASS-2)
+0029 C207             97             CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+002B                  98                 MOV P0,#0xFF        ;PORTA 0 COMO ENTRADA
+*** _________________________________________^
+*** ERROR #A45 IN 98 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 98): UNDEFINED SYMBOL (PASS-2)
+002E D206             99                 SETB        RW              ;MODO LEITURA NO LCD    
+0030 D207            100                 SETB    E_LCD           ;E = 1 (HABILITA LCD)       
+0032 2007FD          101     ESCI1:  JB      BUSYF,ESCI1     ;ESPERA BUSY FLAG = 0
+0035 C207            102             CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+0037 22              103             RET
+                     104     
+                     105     ;***************************************************************************
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     3
+
+                     106     ;NOME: GOTOXY
+                     107     ;DESCRICAO: ROTINA QUE POSICIONA O CURSOR
+                     108     ;P.ENTRADA: R0 = LINHA (0 A 1)
+                     109     ;           R1 = COLUNA (0 A 15)
+                     110     ;P.SAIDA: -
+                     111     ;DESTROI: R0
+0038 C0E0            112     GOTOXY: PUSH    ACC
+003A 7480            113             MOV     A,#80H
+003C B80102          114             CJNE    R0,#01,GT1      ;SALTA SE COLUNA 0
+003F 74C0            115             MOV     A,#0C0H
+0041 49              116     GT1:    ORL     A,R1            ;CALCULA O ENDERECO DA MEMORIA DD RAM
+0042 F8              117             MOV     R0,A
+0043 1121            118             CALL    ESCINST         ;ENVIA PARA O MODULO DISPLAY
+0045 D0E0            119             POP     ACC
+0047 22              120             RET
+                     121                     
+                     122     ;LCD_CLEAR:                             
+                     123     ;               MOV     R0,#01H;INTRUÇAO DE LIMPAR LCD
+                     124     ;               MOV             R2,#02H;ESPERA 1MS
+                     125     ;               CALL ESCINST
+                     126     ;               RET
+                     127     ;LCD_COUT:
+                     128     ;               CLR A
+                     129     ;               MOVC A, @A+DPTR
+                     130     ;               JZ LCD_COUT_END
+                     131     ;               MOV P0,A
+                     132     ;               CALL ENV_ESCRITA
+                     133     ;               INC DPTR
+                     134     ;               JMP LCD_COUT
+                     135     ;       
+                     136     ;       LCD_COUT_END:           
+                     137     ;RET
+                     138     ;***************************************************************************
+                     139     ;NOME: CLR2L
+                     140     ;DESCRICAO: ROTINA QUE APAGA SEGUNDA LINHA DO DISPLAY LCD E POSICIONA NO INICIO
+                     141     ;ENTRADA: -
+                     142     ;SAIDA: -
+                     143     ;DESTROI: R0,R1
+0048                 144     CLR2L:    
+0048 C0E0            145             PUSH   ACC
+004A 7801            146             MOV    R0,#01              ;LINHA
+004C 7900            147             MOV    R1,#00
+004E 1138            148             CALL   GOTOXY
+0050 7910            149             MOV    R1,#16              ;CONTADOR
+0052 7420            150     CLR2L1: MOV    A,#' '              ;ESPACO
+0054 1161            151             CALL   ESCDADO
+0056 D9FA            152             DJNZ   R1,CLR2L1
+0058 7801            153             MOV    R0,#01              ;LINHA
+005A 7900            154             MOV    R1,#00
+005C 1138            155             CALL   GOTOXY
+005E D0E0            156             POP    ACC
+0060 22              157             RET
+                     158                
+                     159     ;***************************************************************************
+                     160     ;NOME: ESCDADO
+                     161     ;DESCRICAO: ROTINA QUE ESCREVE DADO PARA O DISPLAY
+                     162     ;ENTRADA: A = DADO A SER ESCRITA NO MODULO DISPLAY
+                     163     ;SAIDA: -
+                     164     ;DESTROI: R0           
+0061                 165     ESCDADO:  
+0061 C206            166                 CLR RW                                      ;MODO ESCRITA NO LCD
+0063 D205            167             SETB    RS              ;RS  = 1 (SELECIONA REG. DE DADOS)
+0065 D207            168             SETB    E_LCD           ;LCD = 1 (HABILITA LCD)
+0067                 169             MOV     P0,A            ;ESCREVE NO BUS DE DADOS
+*** _________________________________________^
+*** ERROR #A45 IN 169 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 169): UNDEFINED SYMBOL (PASS-2)
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     4
+
+0069 C207            170             CLR     E_LCD           ;LCD = 0 (DESABILITA LCD)
+006B                 171                 MOV P0,#0xFF                        ;PORTA 0 COMO ENTRADA
+*** _________________________________________^
+*** ERROR #A45 IN 171 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 171): UNDEFINED SYMBOL (PASS-2)
+006E D206            172                 SETB        RW                              ;MODO LEITURA NO LCD
+0070 C205            173                     CLR     RS                                      ;RS = 0 (SELECIONA INSTRU??O)   
+0072 D207            174                     SETB    E_LCD           ;E = 1 (HABILITA LCD)
+                     175                     
+0074 2007FD          176     ESCT1:  JB      BUSYF,ESCT1     ;ESPERA BUSY FLAG = 0
+0077 C207            177                     CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+                     178     ;        MOV     R0,#14         ;40uS
+                     179     ;        CALL    ATRASO
+0079 22              180                     RET
+                     181     
+                     182     ;*****************************************************************************
+                     183     ;NOME: MSTRING
+                     184     ;ROTINA QUE ESCREVE UMA STRING DA ROM NO DISPLAY A PARTIR DA POSICAO DO CURSOR
+                     185     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                     186     ;SAIDA: -
+                     187     ;DESTROI: A,DPTR,R0
+007A E4              188     MSTRING:  CLR    A
+007B 93              189               MOVC   A,@A+DPTR      ;CARACTER DA MENSAGEM EM A
+007C 6006            190               JZ     MSTR1
+007E 120061          191               LCALL  ESCDADO        ;ESCREVE O DADO NO DISPLAY
+0081 A3              192               INC    DPTR
+0082 80F6            193               SJMP   MSTRING
+0084 22              194     MSTR1:    RET
+                     195                
+                     196     ;*****************************************************************************
+                     197     ;NOME: MSTRINGX
+                     198     ;ROTINA QUE ESCREVE UMA STRING DA RAM NO DISPLAY A PARTIR DA POSICAO DO CURSOR
+                     199     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA RAM FINALIZADA POR 00H
+                     200     ;SAIDA: -
+                     201     ;DESTROI: A,DPTR,R0
+0085 E0              202     MSTRINGX: MOVX   A,@DPTR        ;CARACTER DA MENSAGEM EM A
+0086 6006            203               JZ     MSTR21
+0088 120061          204               LCALL  ESCDADO        ;ESCREVE O DADO NO DISPLAY
+008B A3              205               INC    DPTR
+008C 80F7            206               SJMP   MSTRINGX
+008E 22              207     MSTR21:   RET
+                     208                
+                     209     ;*****************************************************************************
+                     210     ;NOME: ESC_STR1
+                     211     ;ROTINA QUE ESCREVE UMA STRING NO DISPLAY A PARTIR DO INICIO DA PRIMEIRA LINHA
+                     212     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                     213     ;SAIDA: -
+                     214     ;DESTROI: R0,A,DPTR
+008F 7800            215     ESC_STR1: MOV    R0,#00         ;PRIMEIRA LINHA E PRIMEIRA COLUNA
+0091 7900            216               MOV    R1,#00
+0093 8004            217               JMP    ESC_S
+                     218               
+                     219     ;*****************************************************************************
+                     220     ;NOME: ESC_STR2
+                     221     ;ROTINA QUE ESCREVE UMA STRING NO DISPLAY A PARTIR DO INICIO DA SEGUNDA LINHA
+                     222     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                     223     ;SAIDA: -
+                     224     ;DESTROI: R0,A,DPTR
+0095 7801            225     ESC_STR2: MOV    R0,#01         ;SEGUNDA LINHA E PRIMEIRA COLUNA
+0097 7900            226               MOV    R1,#00
+0099 120038          227     ESC_S:    LCALL  GOTOXY         ;POSICIONA O CURSOR
+009C 12007A          228               LCALL  MSTRING
+009F 22              229               RET
+                     230     
+                     231     
+                     232     ;******************************************************************************
+                     233     ; NOME: CUR_ON E CUR_OFF
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     5
+
+                     234     ; FUNCAO: ROTINA CUR_ON => LIGA CURSOR DO LCD
+                     235     ;         ROTINA CUR_OFF => DESLIGA CURSOR DO LCD
+                     236     ; CHAMA: ESCINST
+                     237     ; ENTRADA: -
+                     238     ; SAIDA: -
+                     239     ; DESTROI: R0
+                     240     ;******************************************************************************
+                     241     
+00A0 780F            242     CUR_ON:   MOV    R0,#0FH              ;INST.CONTROLE ATIVO (CUR ON)
+00A2 8002            243               SJMP   CUR1
+00A4 780C            244     CUR_OFF:  MOV    R0,#0CH              ;INST. CONTROLE INATIVO (CUR OFF)
+00A6 1121            245     CUR1:     CALL   ESCINST              ;ENVIA A INSTRUCAO
+00A8 22              246               RET
+                     247     
+                     248     ;***************************************************************************
+                     249     ;NOME: Atraso
+                     250     ;DESCRI??O: Introduz um atraso (delay) de T = (60 x R0 + 48)/fosc
+                     251     ;       Para fosc = 11,059MHz => R0 = 1 => T = 9,8us  a  R0 = 0 => 1,4ms
+                     252     ;P. ENTRADA: R0 = Valor que multiplica por 60 na f?rmula (OBS.: R0 = 0 => 256)
+                     253     ;P. SAIDA: -
+                     254     ;Altera: R0
+                     255     ;***************************************************************************
+00A9                 256     Atraso:
+00A9 00              257             NOP                     ;12
+00AA 00              258             NOP                     ;12
+00AB 00              259             NOP                     ;12
+00AC D8FB            260             DJNZ    R0,Atraso       ;24
+00AE 22              261             RET                     ;24
+                     262     
+                     263     
+                     264     ;***************************************************************************
+                     265     ;NOME: ATRASO_MS
+                     266     ;DESCRICAO: INTRODUZ UM ATRASO DE 1ms A 256ms
+                     267     ;P.ENTRADA: R2 = 1 => 1ms  A R2 = 0 => 256ms
+                     268     ;P.SAIDA: -
+                     269     ;ALTERA: R0,R2
+00AF                 270     ATRASO_MS:
+00AF 78C7            271             MOV     R0,#199         ;VALOR PARA ATRASO DE 500us P/24MHz
+00B1 11A9            272             CALL    Atraso
+00B3 78C7            273             MOV     R0,#199         ;VALOR PARA ATRASO DE 500us P/24MHz 
+00B5 11A9            274             CALL    Atraso
+00B7 DAF6            275             DJNZ    R2,ATRASO_MS
+00B9 22              276             RET             
+                     277     
+                     278             
+                     279                     
+                     280     ;******************************************************************************
+                     281     ;TESTE VARREDURA DO TECLADO
+                     282     ;ini_varredura:
+                     283     ;       MOV A, #01111111b;
+                     284             
+                     285     ;varre_prox_col:
+                     286     ;       RL A
+                     287     ;       MOV P0, A
+                     288     ;       
+                     289     ;       JNB P0.4 , LINHA1
+                     290     ;       JNB P0.5 , LINHA2 
+                     291     ;       
+                     292     ;       CJNE A, #11111011B , varre_prox_col
+                     293     ;       JMP ini_varredura
+                     294     ;       
+                     295     ;       LINHA1:
+                     296     ;       MOV R2,#'0'
+                     297     ;       JMP FIM
+                     298     ;       
+                     299     ;       LINHA2:
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     6
+
+                     300     ;       MOV R2, #'2'
+                     301     ;       JMP FIM2
+                     302     ;       
+                     303     ;       FIM:
+                     304     ;       CPL A
+                     305     ;       ADD,R2
+                     306     ;       RET
+                     307     ;       
+                     308     ;       FIM2:
+                     309     ;       MOV A, #0xFF
+                     310     ;       RET
+                     311     
+                     312     
+                     313     
+                     314     
+                     315     
+                     316     
+                     317     
+                     318     
+                     319     
+                     320     
+                     321     
+                     322     
+                     323     
+                     324     
+                     325     
+                     326     
+                     327             
+                     328     
+                     329     
+*** WARNING #A41 IN 329 (C:\Users\Avell G1711 NEW\Desktop\DisplayLed.a51, LINE 329): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           12/04/2015 23:25:33 PAGE     7
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ATRASO . . . . . .  C ADDR   00A9H   A   
+ATRASO_MS. . . . .  C ADDR   00AFH   A   
+BUSYF. . . . . . .  B ADDR   0020H.7 A   
+CLR2L. . . . . . .  C ADDR   0048H   A   
+CLR2L1 . . . . . .  C ADDR   0052H   A   
+CONT . . . . . . .  N NUMB   0050H   A   
+CUR1 . . . . . . .  C ADDR   00A6H   A   
+CUR_OFF. . . . . .  C ADDR   00A4H   A   
+CUR_ON . . . . . .  C ADDR   00A0H   A   
+ESCDADO. . . . . .  C ADDR   0061H   A   
+ESCI1. . . . . . .  C ADDR   0032H   A   
+ESCINST. . . . . .  C ADDR   0021H   A   
+ESCT1. . . . . . .  C ADDR   0074H   A   
+ESC_S. . . . . . .  C ADDR   0099H   A   
+ESC_STR1 . . . . .  C ADDR   008FH   A   
+ESC_STR2 . . . . .  C ADDR   0095H   A   
+E_LCD. . . . . . .  B ADDR   0020H.7 A   
+FLAG . . . . . . .  N NUMB   0040H   A   
+GOTOXY . . . . . .  C ADDR   0038H   A   
+GT1. . . . . . . .  C ADDR   0041H   A   
+INIDISP. . . . . .  C ADDR   0000H   A   
+LEDAM. . . . . . .  B ADDR   0020H.7 A   
+LEDVD. . . . . . .  B ADDR   0020H.6 A   
+LEDVM. . . . . . .  B ADDR   0020H.4 A   
+MSTR1. . . . . . .  C ADDR   0084H   A   
+MSTR21 . . . . . .  C ADDR   008EH   A   
+MSTRING. . . . . .  C ADDR   007AH   A   
+MSTRINGX . . . . .  C ADDR   0085H   A   
+P0 . . . . . . . .    ----   -----       
+P1 . . . . . . . .    ----   -----       
+P2 . . . . . . . .    ----   -----       
+P3 . . . . . . . .    ----   -----       
+RS . . . . . . . .  B ADDR   0020H.5 A   
+RW . . . . . . . .  B ADDR   0020H.6 A   
+TECLA. . . . . . .  N NUMB   0042H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 11 ERROR(S)

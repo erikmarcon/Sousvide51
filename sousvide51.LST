@@ -1,0 +1,1958 @@
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN sousvide51.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sousvide51.a51 NOMOD51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;#include <at89c5131.h>
+                +1     2     
+                +1     3     
+                +1     4     
+                +1     5     
+                +1     6     
+                +1     7     
+                +1     8     
+                +1     9     
+                +1    10     
+                +1    11     
+                +1    12     
+                +1    13     
+                +1    14     
+                +1    15     
+                +1    16     
+                +1    17     
+                +1    18     
+                +1    19     
+                +1    20     
+                +1    21     
+                +1    22     
+                +1    23     
+                +1    24     
+                +1    25     
+                +1    26     
+                +1    27     
+                +1    28     
+                +1    29     
+                +1    30     
+  00E0          +1    31     sfr ACC = 0xE0 ;        /* Sfr ( ACC, bit addressable)*/
+  00F0          +1    32     sfr B = 0xF0 ;        /* Sfr ( B,   bit addressable)*/
+  00D0          +1    33     sfr PSW = 0xD0 ;        /* Sfr ( PSW, bit addressable)*/
+  0081          +1    34     sfr SP = 0x81 ;
+  0082          +1    35     sfr DPL = 0x82 ;
+  0083          +1    36     sfr DPH = 0x83 ;
+                +1    37     
+                +1    38     
+                +1    39     
+                +1    40     
+                +1    41     
+                +1    42     
+  0080          +1    43     sfr P0 = 0x80 ;        /* Sfr ( P0, bit addressable)*/
+                +1    44     
+  0087          +1    45     sbit P0_7 = P0 ^ 7 ;
+  0086          +1    46     sbit P0_6 = P0 ^ 6 ;
+  0085          +1    47     sbit P0_5 = P0 ^ 5 ;
+  0084          +1    48     sbit P0_4 = P0 ^ 4 ;
+  0083          +1    49     sbit P0_3 = P0 ^ 3 ;
+  0082          +1    50     sbit P0_2 = P0 ^ 2 ;
+  0081          +1    51     sbit P0_1 = P0 ^ 1 ;
+  0080          +1    52     sbit P0_0 = P0 ^ 0 ;
+                +1    53     
+  0090          +1    54     sfr P1 = 0x90 ;        /* Sfr ( P1, bit addressable)*/
+                +1    55     
+  0097          +1    56     sbit P1_7 = P1 ^ 7 ;
+  0096          +1    57     sbit P1_6 = P1 ^ 6 ;
+  0095          +1    58     sbit P1_5 = P1 ^ 5 ;
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     2
+
+  0094          +1    59     sbit P1_4 = P1 ^ 4 ;
+  0093          +1    60     sbit P1_3 = P1 ^ 3 ;
+  0092          +1    61     sbit P1_2 = P1 ^ 2 ;
+  0091          +1    62     sbit P1_1 = P1 ^ 1 ;
+  0090          +1    63     sbit P1_0 = P1 ^ 0 ;
+                +1    64     
+  00A0          +1    65     sfr P2 = 0xA0 ;        /* Sfr ( P2, bit addressable)*/
+                +1    66     
+  00A7          +1    67     sbit P2_7 = P2 ^ 7 ;
+  00A6          +1    68     sbit P2_6 = P2 ^ 6 ;
+  00A5          +1    69     sbit P2_5 = P2 ^ 5 ;
+  00A4          +1    70     sbit P2_4 = P2 ^ 4 ;
+  00A3          +1    71     sbit P2_3 = P2 ^ 3 ;
+  00A2          +1    72     sbit P2_2 = P2 ^ 2 ;
+  00A1          +1    73     sbit P2_1 = P2 ^ 1 ;
+  00A0          +1    74     sbit P2_0 = P2 ^ 0 ;
+                +1    75     
+  00B0          +1    76     sfr P3 = 0xB0 ;        /* Sfr ( P3, bit addressable)*/
+                +1    77     
+  00B7          +1    78     sbit P3_7 = P3 ^ 7 ;
+  00B6          +1    79     sbit P3_6 = P3 ^ 6 ;
+  00B5          +1    80     sbit P3_5 = P3 ^ 5 ;
+  00B4          +1    81     sbit P3_4 = P3 ^ 4 ;
+  00B3          +1    82     sbit P3_3 = P3 ^ 3 ;
+  00B2          +1    83     sbit P3_2 = P3 ^ 2 ;
+  00B1          +1    84     sbit P3_1 = P3 ^ 1 ;
+  00B0          +1    85     sbit P3_0 = P3 ^ 0 ;
+                +1    86     
+  00C0          +1    87     sfr P4 = 0xC0 ;        /* Sfr ( P4, bit addressable)*/
+                +1    88     
+  00C1          +1    89     sbit P4_1 = P4 ^ 1 ;
+  00C0          +1    90     sbit P4_0 = P4 ^ 0 ;
+                +1    91     
+                +1    92     
+                +1    93     
+                +1    94     
+  008C          +1    95     sfr TH0 = 0x8C ; 
+  008A          +1    96     sfr TL0 = 0x8A ;
+  008D          +1    97     sfr TH1 = 0x8D ;
+  008B          +1    98     sfr TL1 = 0x8B ;
+  00CD          +1    99     sfr TH2 = 0xCD ;
+  00CC          +1   100     sfr TL2 = 0xCC ;
+  0088          +1   101     sfr TCON = 0x88 ;        /* Sfr ( TCON,  bit addressable)*/
+  0089          +1   102     sfr TMOD = 0x89 ;
+  00C8          +1   103     sfr T2CON = 0xC8 ;        /* Sfr ( T2CON, bit addressable)*/
+  00C9          +1   104     sfr T2MOD = 0xC9 ;
+  00CB          +1   105     sfr RCAP2H = 0xCB ;
+  00CA          +1   106     sfr RCAP2L = 0xCA ;
+  00A6          +1   107     sfr WDTRST = 0xA6 ;
+  00A7          +1   108     sfr WDTPRG = 0xA7 ;
+                +1   109     
+                +1   110                                 
+  008F          +1   111     sbit TF1 = TCON ^ 7 ;
+  008E          +1   112     sbit TR1 = TCON ^ 6 ;
+  008D          +1   113     sbit TF0 = TCON ^ 5 ;
+  008C          +1   114     sbit TR0 = TCON ^ 4 ;
+  008B          +1   115     sbit IE1_ = TCON ^ 3 ;
+  008A          +1   116     sbit IT1 = TCON ^ 2 ;
+  0089          +1   117     sbit IE0_ = TCON ^ 1 ;
+  0088          +1   118     sbit IT0 = TCON ^ 0 ;
+                +1   119                                 
+  00CF          +1   120     sbit TF2 = T2CON ^ 7 ;
+  00CE          +1   121     sbit EXF2 = T2CON ^ 6 ;
+  00CD          +1   122     sbit RCLK = T2CON ^ 5 ;
+  00CC          +1   123     sbit TCLK = T2CON ^ 4 ;
+  00CB          +1   124     sbit EXEN2 = T2CON ^ 3 ;
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     3
+
+  00CA          +1   125     sbit TR2 = T2CON ^ 2 ;
+  00C9          +1   126     sbit C_T2 = T2CON ^ 1 ;
+  00C8          +1   127     sbit CP_RL2 = T2CON ^ 0 ;
+                +1   128     
+                +1   129     
+                +1   130     
+                +1   131     
+  0098          +1   132     sfr SCON = 0x98 ;
+  0099          +1   133     sfr SBUF = 0x99 ;
+  00B9          +1   134     sfr SADEN = 0xB9 ;
+  00A9          +1   135     sfr SADDR = 0xA9 ;
+                +1   136     
+  009F          +1   137     sbit FE_SM0 = SCON ^ 7 ;
+  009E          +1   138     sbit SM1 = SCON ^ 6 ;
+  009D          +1   139     sbit SM2 = SCON ^ 5 ;
+  009C          +1   140     sbit REN = SCON ^ 4 ;
+  009B          +1   141     sbit TB8 = SCON ^ 3 ;
+  009A          +1   142     sbit RB8 = SCON ^ 2 ;
+  0099          +1   143     sbit TI = SCON ^ 1 ;
+  0098          +1   144     sbit RI = SCON ^ 0 ;
+                +1   145     
+                +1   146     
+                +1   147     
+  009A          +1   148     sfr BRL = 0x9A ;
+  009B          +1   149     sfr BDRCON = 0x9B ;
+                +1   150     
+                +1   151     
+                +1   152     
+  00D8          +1   153     sfr CCON = 0xD8 ;      /* Sfr ( CCON, bit addressable)*/
+  00D9          +1   154     sfr CMOD = 0xD9 ;
+  00E9          +1   155     sfr CL = 0xE9 ;
+  00F9          +1   156     sfr CH = 0xF9 ;
+  00DA          +1   157     sfr CCAPM0 = 0xDA ;
+  00DB          +1   158     sfr CCAPM1 = 0xDB ;
+  00DC          +1   159     sfr CCAPM2 = 0xDC ;
+  00DD          +1   160     sfr CCAPM3 = 0xDD ;
+  00DE          +1   161     sfr CCAPM4 = 0xDE ;
+  00FA          +1   162     sfr CCAP0H = 0xFA ;
+  00FB          +1   163     sfr CCAP1H = 0xFB ;
+  00FC          +1   164     sfr CCAP2H = 0xFC ;
+  00FD          +1   165     sfr CCAP3H = 0xFD ;
+  00FE          +1   166     sfr CCAP4H = 0xFE ;
+  00EA          +1   167     sfr CCAP0L = 0xEA ;
+  00EB          +1   168     sfr CCAP1L = 0xEB ;
+  00EC          +1   169     sfr CCAP2L = 0xEC ;
+  00ED          +1   170     sfr CCAP3L = 0xED ;
+  00EE          +1   171     sfr CCAP4L = 0xEE ;
+                +1   172     
+                +1   173                                  
+  00DF          +1   174     sbit CF = CCON ^ 7 ;
+  00DE          +1   175     sbit CR = CCON ^ 6 ;
+  00DC          +1   176     sbit CCF4 = CCON ^ 4 ;
+  00DB          +1   177     sbit CCF3 = CCON ^ 3 ;
+  00DA          +1   178     sbit CCF2 = CCON ^ 2 ;
+  00D9          +1   179     sbit CCF1 = CCON ^ 1 ;
+  00D8          +1   180     sbit CCF0 = CCON ^ 0 ;
+                +1   181     
+                +1   182     
+                +1   183     
+                +1   184     
+  00A8          +1   185     sfr IEN0 = 0xA8 ;       /* Sfr ( IEN0,  bit addressable                 */
+  00B1          +1   186     sfr IEN1 = 0xB1 ;
+  00B8          +1   187     sfr IPL0 = 0xB8 ;       /* Sfr ( IPL0, bit addressable          */
+  00B7          +1   188     sfr IPH0 = 0xB7 ;
+  00B2          +1   189     sfr IPL1 = 0xB2 ;
+  00B3          +1   190     sfr IPH1 = 0xB3 ;
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     4
+
+                +1   191     
+                +1   192                                  
+  00AF          +1   193     sbit EA = IEN0 ^ 7 ;
+  00AE          +1   194     sbit EC = IEN0 ^ 6 ;
+  00AD          +1   195     sbit ET2 = IEN0 ^ 5 ;
+  00AC          +1   196     sbit ES = IEN0 ^ 4 ;
+  00AB          +1   197     sbit ET1 = IEN0 ^ 3 ;
+  00AA          +1   198     sbit EX1 = IEN0 ^ 2 ;
+  00A9          +1   199     sbit ET0 = IEN0 ^ 1 ;
+  00A8          +1   200     sbit EX0 = IEN0 ^ 0 ;
+                +1   201                                  
+  00BE          +1   202     sbit PPCL = IPL0 ^ 6 ;
+  00BD          +1   203     sbit PT2L = IPL0 ^ 5 ;
+  00BC          +1   204     sbit PSL = IPL0 ^ 4 ;
+  00BB          +1   205     sbit PTIL = IPL0 ^ 3 ;
+  00BA          +1   206     sbit PXIL = IPL0 ^ 2 ;
+  00B9          +1   207     sbit PT0L = IPL0 ^ 1 ;
+  00B8          +1   208     sbit PX0L = IPL0 ^ 0 ;
+                +1   209     
+                +1   210     
+                +1   211     
+  00A3          +1   212     sfr PLLCON = 0xA3 ;
+  00A4          +1   213     sfr PLLDIV = 0xA4 ;
+                +1   214     
+                +1   215     
+                +1   216     
+  009E          +1   217     sfr KBF = 0x9E ;
+  009D          +1   218     sfr KBE = 0x9D ;
+  009C          +1   219     sfr KBLS = 0x9C ;
+                +1   220     
+                +1   221     
+                +1   222     
+  0093          +1   223     sfr SSCON = 0x93 ;
+  0094          +1   224     sfr SSCS = 0x94 ;
+  0095          +1   225     sfr SSDAT = 0x95 ;
+  0096          +1   226     sfr SSADR = 0x96 ;
+                +1   227     
+                +1   228     
+                +1   229     
+  00C3          +1   230     sfr SPCON = 0xC3 ;
+  00C4          +1   231     sfr SPSTA = 0xC4 ;
+  00C5          +1   232     sfr SPDAT = 0xC5 ;
+                +1   233     
+                +1   234     
+                +1   235     
+  00BC          +1   236     sfr USBCON = 0xBC ;
+  00C6          +1   237     sfr USBADDR = 0xC6 ;
+  00BD          +1   238     sfr USBINT = 0xBD ;
+  00BE          +1   239     sfr USBIEN = 0xBE ;
+  00C7          +1   240     sfr UEPNUM = 0xC7 ;
+  00D4          +1   241     sfr UEPCONX = 0xD4 ;
+  00CE          +1   242     sfr UEPSTAX = 0xCE ;
+  00D5          +1   243     sfr UEPRST = 0xD5 ;
+  00F8          +1   244     sfr UEPINT = 0xF8 ;         /* Sfr ( UEPINT, bit addressable) */
+  00C2          +1   245     sfr UEPIEN = 0xC2 ;
+  00CF          +1   246     sfr UEPDATX = 0xCF ;
+  00E2          +1   247     sfr UBYCTLX = 0xE2 ;
+  00E3          +1   248     sfr UBYCTHX = 0xE3 ;
+  00D6          +1   249     sfr UDPADDL = 0xD6 ;
+  00D7          +1   250     sfr UDPADDH = 0xD7 ;
+  00BA          +1   251     sfr UFNUML = 0xBA ;
+  00BB          +1   252     sfr UFNUMH = 0xBB ;
+                +1   253                                     
+  00FE          +1   254     sbit EP6INT = UEPINT ^ 6 ;
+  00FD          +1   255     sbit EP5INT = UEPINT ^ 5 ;
+  00FC          +1   256     sbit EP4INT = UEPINT ^ 4 ;
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     5
+
+  00FB          +1   257     sbit EP3INT = UEPINT ^ 3 ;
+  00FA          +1   258     sbit EP2INT = UEPINT ^ 2 ;
+  00F9          +1   259     sbit EP1INT = UEPINT ^ 1 ;
+  00F8          +1   260     sbit EP0INT = UEPINT ^ 0 ;
+                +1   261     
+                +1   262     
+                +1   263     
+  0087          +1   264     sfr PCON = 0x87 ;
+  008E          +1   265     sfr AUXR = 0x8E ;
+  00A2          +1   266     sfr AUXR1 = 0xA2 ;
+  008F          +1   267     sfr CKCON0 = 0x8F ;
+  00AF          +1   268     sfr CKCON1 = 0xAF ;
+  0085          +1   269     sfr CKSEL = 0x85 ;
+  00F1          +1   270     sfr LEDCON = 0xF1 ;
+  00D1          +1   271     sfr FCON = 0xD1 ;
+  00D2          +1   272     sfr EECON = 0xD2 ;
+                +1   273     
+                +1   274     
+                +1   275     
+                +1   276     
+                     277     
+                     278     
+                     279     USING 0x00
+                     280     
+2000                 281     ORG 2000h
+2000 21D1            282             JMP    INICIO
+                     283     
+200B                 284     ORG 200Bh
+200B 8158            285             JMP    TIMER0_IRQ
+                     286             
+2100                 287     ORG 2100h
+                     288     ;-----------------------------------------------------------------------------------------
+                     289     ;       LCD
+                     290     ;-----------------------------------------------------------------------------------------
+  00A5               291     RS              EQU     P2.5                    ;COMANDO RS LCD
+  00A7               292     E_LCD   EQU     P2.7                    ;COMANDO E (ENABLE) LCD
+  00A6               293     RW              EQU     P2.6                    ;READ/WRITE
+  0087               294     BUSYF   EQU     P0.7                    ;BUSY FLAG
+                     295     ;-----------------------------------------------------------------------------------------
+                     296     ;       Tabela de strings
+                     297     ;-----------------------------------------------------------------------------------------
+2100                 298     STR_S51:
+2100 20202053        299                     DB              '   SOUSVIDE51   ',00H  
+2104 4F555356                
+2108 49444535                
+210C 31202020                
+2110 00                      
+2111                 300     STR_CLR:
+2111 20202020        301                     DB      '                ',00H          
+2115 20202020                
+2119 20202020                
+211D 20202020                
+2121 00                      
+                     302     ;-----------------------------------------------------------------------------------------
+                     303     ;       Tabela de Alimentos
+                     304     ;-----------------------------------------------------------------------------------------
+2122                 305     STR_CARNE:
+2122 20434152        306                     DB      ' CARNE                  ',00H
+2126 4E452020                
+212A 20202020                
+212E 20202020                
+2132 20202020                
+2136 20202020                
+213A 00                      
+213B                 307     STR_PEIXE:
+213B 20504549        308                     DB      ' PEIXE                  ',00H
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     6
+
+213F 58452020                
+2143 20202020                
+2147 20202020                
+214B 20202020                
+214F 20202020                
+2153 00                      
+2154                 309     STR_FRANGO:
+2154 20465241        310                     DB      ' FRANGO                 ',00H
+2158 4E474F20                
+215C 20202020                
+2160 20202020                
+2164 20202020                
+2168 20202020                
+216C 00                      
+216D                 311     STR_TESTE:
+216D 20544553        312                     DB      ' TESTE                  ',00H                  
+2171 54452020                
+2175 20202020                
+2179 20202020                
+217D 20202020                
+2181 20202020                
+2185 00                      
+2186                 313     STR_CARNE_MP:
+2186 204D414C        314                     DB      ' MAL PASSADO    ',00H
+218A 20504153                
+218E 5341444F                
+2192 20202020                
+2196 00                      
+2197                 315     STR_CARNE_AP:
+2197 20414F20        316                     DB      ' AO PONTO       ',00H
+219B 504F4E54                
+219F 4F202020                
+21A3 20202020                
+21A7 00                      
+21A8                 317     STR_CARNE_BP:
+21A8 2042454D        318                     DB      ' BEM PASSADO    ',00H
+21AC 20504153                
+21B0 5341444F                
+21B4 20202020                
+21B8 00                      
+                     319     ;-----------------------------------------------------------------------------------------
+                     320     ;       Tabelas de tempo
+                     321     ;----------------------------------------------------------------------------------------- 
+                                  
+21B9                 322     TABELA_TEMPO:
+21B9 3C3C3C          323             TEMPO_CARNE:    DB 60,60,60
+21BC 28282D          324             TEMPO_PEIXE:    DB 40,40,45
+21BF 3C3C3C          325             TEMPO_FRANGO:   DB 60,60,60
+21C2 010A0F          326             TEMPO_TESTE:    DB 1,10,15              
+                     327     ;-----------------------------------------------------------------------------------------
+                     328     ;       Tabelas de temperatura - mal passado, ao ponto e bem passado
+                     329     ;-----------------------------------------------------------------------------------------
+21C5                 330     TABELA_TEMPERATURA:
+21C5 8791A2          331             TEMPERATURA_CARNE:      DB 087h,091h,0A2h  ; temperatura x2.5 em hexa => cada ponto
+                              no adc = 0.04 graus
+21C8 647D96          332             TEMPERATURA_PEIXE:      DB 064h,07Dh,096h
+21CB 96A2BB          333             TEMPERATURA_FRANGO: DB 096h,0A2h,0BBh
+21CE 4B6496          334             TEMPERATURA_TESTE:      DB 04Bh,064h,096h
+                     335     ;-----------------------------------------------------------------------------------------
+                     336     ;       Definiçao do RTC
+                     337     ;-----------------------------------------------------------------------------------------
+  3600               338     CRYSTAL         EQU 24000000            ;FREQ crystal
+  000C               339     TMRCYCLE        EQU 12                  ;ciclos de maquina -pulsos do cristal
+  0480               340     TMR_SEC         EQU CRYSTAL/TMRCYCLE    ;The # of timer increments per second = 2000000
+  0028               341     QUANTA                  EQU 40
+  001C               342     FTH_DE_SEGUNDO  EQU TMR_SEC/QUANTA      ; valor de qnts incrementos acontecem em .05 seg = 
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     7
+
+                             100000
+  3CB0               343     RESET_VALUE     EQU 15536       
+                     344     ;-----------------------------------------------------------------------------------------
+                     345     ;       Definiçao do número de alimentos
+                     346     ;-----------------------------------------------------------------------------------------
+  0004               347     NUM_ALIMENTO    EQU 4
+                     348     ;-----------------------------------------------------------------------------------------
+                     349     ;       Definição dos botoes
+                     350     ;----------------------------------------------------------------------------------------- 
+                               
+  00B4               351     SW_DOWN                 EQU             P3.4    
+  00B2               352     SW_ENTER                EQU             P3.2
+                     353     ;-----------------------------------------------------------------------------------------
+                     354     ;       Definição dos LEDs
+                     355     ;-----------------------------------------------------------------------------------------
+  00B6               356     LEDVD                   EQU             P3.6
+  00B7               357     LEDAM                   EQU             P3.7
+  0094               358     LEDVM                   EQU             P1.4
+                     359     ;-----------------------------------------------------------------------------------------
+                     360     ;       Definição dos pinos do ADC
+                     361     ;-----------------------------------------------------------------------------------------
+  0095               362     SPI_MISO                EQU     P1.5
+  0097               363     SPI_MOSI                EQU             P1.7 
+  0096               364     SPI_CLK                 EQU             P1.6
+  0091               365     SPI_ADC_CS              EQU             P1.1
+                     366     ;-----------------------------------------------------------------------------------------
+                     367     ;       Definição de variáveis utilizadas pela função ADC
+                     368     ;-----------------------------------------------------------------------------------------
+  0030               369     ADC_V_RAW               EQU             30h
+  0031               370     TEMP_ADC_MSB    EQU             31h
+  0032               371     TEMP_ADC_LSB    EQU             32h
+                     372     ;-----------------------------------------------------------------------------------------
+                     373     ;       Definição do controle do relé
+                     374     ;-----------------------------------------------------------------------------------------
+  00A0               375     RELE_CONTROL    EQU             P2.0
+                     376     ;-----------------------------------------------------------------------------------------
+                     377     ;       VARIAVEIS
+                     378     ;-----------------------------------------------------------------------------------------
+  0040               379     ALIMENTO_ATUAL          EQU 40h
+  0041               380     PONTO_ATUAL             EQU 41h
+  0042               381     TEMPERATURA_ALVO        EQU 42h
+  0043               382     TEMPO_ALVO                      EQU 43h
+  0044               383     SEGUNDOS                        EQU 44h
+  0045               384     MINUTOS                         EQU 45h
+  0046               385     HORAS                           EQU 46h
+  0047               386     TICKS                           EQU 47h
+  0048               387     STR_TEMP                        EQU 48h ; vai de 48h a 58h
+  0050               388     STR_HRS                         EQU 50h ; str hrs
+  0052               389     STR_2P0                         EQU 52h
+  0053               390     STR_MIN                         EQU 53h ; str min
+  0055               391     STR_2P1                         EQU 55h
+  0056               392     STR_SEG                         EQU 56h ; str seg
+  0057               393     FLAG                            EQU     57h
+  0059               394     NOVO_SEGUNDO            EQU 59h
+                     395     ;-----------------------------------------------------------------------------------------
+                     396     ;       INICIO DO PROGRAMA
+                     397     ;-----------------------------------------------------------------------------------------
+21D1                 398     INICIO:
+21D1 D1B8            399             CALL   INIDISP
+21D3 902100          400             MOV    DPTR,#STR_S51
+21D6 F147            401             CALL   ESC_STR1
+21D8 902122          402             MOV        DPTR,#STR_CARNE      
+21DB F14D            403             CALL   ESC_STR2
+21DD 71B4            404             CALL   INICIALIZAR_VARIAVEIS
+                     405             
+                     406     ;-----------------------------------------------------------------------------------------
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     8
+
+                     407     ;       Rotina do menu - seleção do alimento
+                     408     ;-----------------------------------------------------------------------------------------
+21DF                 409     LOOP_ALIMENTOS:
+                     410             
+21DF 9188            411             CALL CHECK_DOWN
+21E1 7006            412             JNZ CHAMA_PROXIMO_ALIMENTO
+21E3 91A0            413             CALL CHECK_ENTER
+21E5 7006            414             JNZ LOOP_INICIO_PONTO
+21E7 80F6            415             JMP LOOP_ALIMENTOS
+                     416             
+21E9                 417             CHAMA_PROXIMO_ALIMENTO:
+21E9 7143            418             CALL PROXIMO_ALIMENTO
+21EB 80F2            419             JMP LOOP_ALIMENTOS
+                     420     
+21ED                 421     LOOP_INICIO_PONTO:
+21ED 30B2FD          422             JNB SW_ENTER, LOOP_INICIO_PONTO
+21F0 902186          423             MOV DPTR,#STR_CARNE_MP
+21F3 F14D            424             CALL ESC_STR2
+                     425     ;-----------------------------------------------------------------------------------------
+                     426     ;       Rotina do menu - seleção do ponto
+                     427     ;-----------------------------------------------------------------------------------------
+21F5                 428     LOOP_PONTO:
+21F5 9188            429             CALL CHECK_DOWN
+21F7 7006            430             JNZ CHAMA_PROXIMO_PONTO
+21F9 91A0            431             CALL CHECK_ENTER
+21FB 7006            432             JNZ PEGA_TEMPO_TEMPERATURA
+21FD 80F6            433             JMP LOOP_PONTO
+                     434             
+21FF                 435             CHAMA_PROXIMO_PONTO:
+21FF 7173            436             CALL PROXIMO_PONTO
+2201 80F2            437             JMP LOOP_PONTO
+                     438     
+2203                 439     PEGA_TEMPO_TEMPERATURA:
+2203 E540            440             MOV A,ALIMENTO_ATUAL
+2205 75F003          441             MOV B,#3
+2208 A4              442             MUL AB
+2209 2541            443             ADD A,PONTO_ATUAL
+220B C0E0            444             PUSH ACC
+220D 9021C5          445             MOV DPTR,#TABELA_TEMPERATURA
+2210 93              446             MOVC A,@A+DPTR
+2211 F542            447             MOV TEMPERATURA_ALVO,A
+2213 D0E0            448             POP ACC
+2215 9021B9          449             MOV DPTR,#TABELA_TEMPO
+2218 93              450             MOVC A,@A+DPTR
+2219 F543            451             MOV TEMPO_ALVO,A
+                     452     
+221B 8000            453             JMP INICIAR_OPERACAO
+                     454     ;-----------------------------------------------------------------------------------------
+                     455     ;       Rotina principal - pega os valores escolhidos no menu, inicia o timer, 
+                     456     ;                                          monitora a temperatura e liga o rabo quente     
+                                                  
+                     457     ;-----------------------------------------------------------------------------------------
+221D                 458     INICIAR_OPERACAO:
+221D C2B7            459             CLR LEDAM
+221F 902111          460             MOV     DPTR,#STR_CLR
+2222 F147            461             CALL    ESC_STR1
+2224 854345          462             MOV MINUTOS,TEMPO_ALVO
+2227 755901          463             MOV NOVO_SEGUNDO,#1
+222A 719B            464             CALL INICIAR_RTC ;-> inicializa o timer
+                     465     
+222C                 466             ESCREVE:
+                     467             ; SINCRONIA DE ESCRITA
+222C 7859            468             MOV R0,#NOVO_SEGUNDO
+222E B6010C          469             CJNE @R0,#1,NAO_ESCREVE
+2231 755900          470             MOV NOVO_SEGUNDO,#0
+2234 71FA            471             CALL ATUALIZA_STR_TEMP
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE     9
+
+2236 F100            472             CALL CLR2L
+2238 900048          473             MOV DPTR,#STR_TEMP
+223B F13D            474             CALL MSTRINGX   
+                     475             
+223D                 476             NAO_ESCREVE:            
+223D 911C            477             CALL    LEITURA_ADC
+223F 514D            478             CALL    CALC_TEMPERATURA
+2241 51F6            479             CALL    TEMPERATURA_LCD
+2243 BE003A          480             CJNE    R6,#0,CONTROLE_TEMPERATURA_SUBINDO
+2246 BF0072          481             CJNE    R7,#0,CONTROLE_TEMPERATURA_DESCENDO
+2249 5162            482             CALL    CONTROLE_TEMPERATURA 
+                     483             
+224B 80DF            484             JMP ESCREVE
+                     485     ;-----------------------------------------------------------------------------------------
+                     486     ;       Rotina que calcula o valor da temperatura baseado na entrada do ADC
+                     487     ;-----------------------------------------------------------------------------------------
+224D                 488     CALC_TEMPERATURA:
+224D C0E0            489             PUSH    ACC
+                     490     
+224F E530            491             MOV             A,      ADC_V_RAW
+2251 9024B8          492             MOV             DPTR,   #TABLE_LM35_LOW_TO_BCD
+2254 93              493             MOVC    A,      @A+DPTR
+2255 F532            494             MOV             TEMP_ADC_LSB,   A
+                     495             
+2257 E530            496             MOV             A,      ADC_V_RAW
+2259 9025B8          497             MOV             DPTR,   #TABLE_LM35_HIGH_TO_BCD
+225C 93              498             MOVC    A,      @A+DPTR
+225D F531            499             MOV             TEMP_ADC_MSB,   A
+                     500     
+225F D0E0            501             POP             ACC
+2261 22              502             RET
+                     503     ;-----------------------------------------------------------------------------------------
+                     504     ;       Rotina que liga e desliga o rabo quente baseado na temperatura 
+                     505     ;-----------------------------------------------------------------------------------------
+2262                 506     CONTROLE_TEMPERATURA:
+2262 C0E0            507             PUSH ACC
+2264 E542            508             MOV A, TEMPERATURA_ALVO
+2266 9530            509             SUBB A, ADC_V_RAW
+2268 400B            510             JC      TEMPERATURA_MAIOR
+226A                 511     TEMPERATURA_MENOR:   ;-> temp da agua
+226A D2A0            512             SETB RELE_CONTROL ;-> liga o relé
+226C C294            513             CLR LEDVM
+226E 7E01            514             MOV R6,#1
+2270 7F00            515             MOV     R7,#0
+2272 D0E0            516             POP ACC
+2274 22              517             RET
+2275                 518     TEMPERATURA_MAIOR:
+2275 C2A0            519             CLR RELE_CONTROL ;-> desliga o relé
+2277 D294            520             SETB LEDVM
+2279 7F01            521             MOV R7,#1
+227B 7E00            522             MOV R6,#0
+227D D0E0            523             POP ACC
+227F 22              524             RET
+                     525     ;-----------------------------------------------------------------------------------------
+2280                 526     CONTROLE_TEMPERATURA_SUBINDO:  ; quando a temperatura baixa da temperatura_alvo, só volta a
+                              ligar se baixar mais 0.8 graus
+2280 C0E0            527             PUSH ACC
+2282 7457            528             MOV A,#FLAG
+2284 B40019          529             CJNE A,#0,LOOP_FLAG
+2287 E542            530             MOV A, TEMPERATURA_ALVO
+2289 9530            531             SUBB A, ADC_V_RAW
+228B 4008            532             JC      TEMPERATURA_ACIMA0
+228D                 533     TEMPERATURA_ABAIXO0:
+228D D2A0            534             SETB RELE_CONTROL
+228F C294            535             CLR LEDVM
+2291 D0E0            536             POP ACC
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    10
+
+2293 8097            537             JMP ESCREVE
+2295                 538     TEMPERATURA_ACIMA0:
+2295 C2A0            539             CLR RELE_CONTROL
+2297 D294            540             SETB LEDVM
+2299 755701          541             MOV FLAG,#1
+229C D0E0            542             POP ACC
+229E 808C            543             JMP ESCREVE
+22A0                 544     LOOP_FLAG:      
+22A0 E542            545             MOV A, TEMPERATURA_ALVO
+22A2 14              546             DEC A
+22A3 14              547             DEC A
+22A4 9530            548             SUBB A, ADC_V_RAW
+22A6 5008            549             JNC TEMPERATURA_ACIMA1
+22A8                 550     TEMPERATURA_ABAIXO1:
+22A8 C2A0            551             CLR RELE_CONTROL
+22AA D294            552             SETB LEDVM
+22AC D0E0            553             POP ACC
+22AE 412C            554             JMP ESCREVE
+22B0                 555     TEMPERATURA_ACIMA1:
+22B0 D2A0            556             SETB RELE_CONTROL
+22B2 C294            557             CLR LEDVM
+22B4 755700          558             MOV FLAG,#0
+22B7 D0E0            559             POP ACC
+22B9 412C            560             JMP ESCREVE
+                     561             
+                     562     ;----------------------------------------------------------------------------------------- 
+                                  
+22BB                 563     CONTROLE_TEMPERATURA_DESCENDO:
+22BB C0E0            564             PUSH ACC
+22BD 7457            565             MOV A,#FLAG
+22BF B40019          566             CJNE A,#0,LOOP_FLAG2
+22C2 E542            567             MOV A, TEMPERATURA_ALVO
+22C4 9530            568             SUBB A, ADC_V_RAW
+22C6 5008            569             JNC     TEMPERATURA_ABAIXO2
+22C8                 570     TEMPERATURA_ACIMA2:
+22C8 C2A0            571             CLR RELE_CONTROL
+22CA D294            572             SETB LEDVM
+22CC D0E0            573             POP ACC
+22CE 412C            574             JMP ESCREVE
+22D0                 575     TEMPERATURA_ABAIXO2:
+22D0 D2A0            576             SETB RELE_CONTROL
+22D2 C294            577             CLR LEDVM
+22D4 755701          578             MOV FLAG,#1
+22D7 D0E0            579             POP ACC
+22D9 412C            580             JMP ESCREVE
+22DB                 581     LOOP_FLAG2:     
+22DB E542            582             MOV A, TEMPERATURA_ALVO
+22DD 04              583             INC A
+22DE 04              584             INC A
+22DF 9530            585             SUBB A, ADC_V_RAW
+22E1 4008            586             JC TEMPERATURA_ACIMA3
+22E3                 587     TEMPERATURA_ABAIXO3:
+22E3 D2A0            588             SETB RELE_CONTROL
+22E5 C294            589             CLR LEDVM
+22E7 D0E0            590             POP ACC
+22E9 412C            591             JMP ESCREVE
+22EB                 592     TEMPERATURA_ACIMA3:
+22EB C2A0            593             CLR RELE_CONTROL
+22ED D294            594             SETB LEDVM
+22EF 755700          595             MOV FLAG,#0
+22F2 D0E0            596             POP ACC
+22F4 412C            597             JMP ESCREVE
+                     598     
+                     599     ;-----------------------------------------------------------------------------------------
+                     600     ;       Rotina que envia o valor da temperatura para o LCD
+                     601     ;-----------------------------------------------------------------------------------------
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    11
+
+22F6                 602     TEMPERATURA_LCD:
+22F6 C0E0            603                     PUSH    ACC
+22F8 C000            604                     PUSH    AR0
+22FA C001            605                     PUSH    AR1
+                     606                     
+22FC 7800            607                     MOV             R0,     #0x00
+22FE 7901            608                     MOV             R1, #0x01
+2300 D1EE            609                     ACALL   GOTOXY
+                     610                     
+2302 7454            611                     MOV             A, #0x54
+2304 F119            612                     CALL    ESCDADO
+                     613                     
+2306 743A            614                     MOV     A, #0x3A
+2308 F119            615                     CALL    ESCDADO
+                     616                     
+230A 7420            617                     MOV     A, #0x20
+230C F119            618                     CALL    ESCDADO                         
+                     619                     
+230E E531            620                     MOV             A,      TEMP_ADC_MSB
+2310 54F0            621                     ANL             A, #11110000b
+2312 C4              622                     SWAP    A
+2313 2430            623                     ADD             A, #0x30
+2315 F119            624                     ACALL   ESCDADO
+                     625                     
+2317 E531            626                     MOV             A, TEMP_ADC_MSB
+2319 540F            627                     ANL             A, #00001111b
+231B 2430            628                     ADD             A, #0x30
+231D F119            629                     ACALL   ESCDADO
+                     630                     
+231F E532            631                     MOV             A,      TEMP_ADC_LSB
+2321 54F0            632                     ANL             A, #11110000b
+2323 C4              633                     SWAP    A
+2324 2430            634                     ADD             A, #0x30
+2326 F119            635                     ACALL   ESCDADO
+                     636                     
+2328 742E            637                     MOV             A,      #0x2E
+232A F119            638                     ACALL   ESCDADO 
+                     639                     
+232C E532            640                     MOV             A, TEMP_ADC_LSB
+232E 540F            641                     ANL             A, #00001111b
+2330 2430            642                     ADD             A, #0x30
+2332 F119            643                     ACALL   ESCDADO
+                     644                     
+2334 7420            645                     MOV     A, #0x20
+2336 F119            646                     CALL    ESCDADO 
+                     647                     
+2338 7443            648                     MOV             A,      #0x43
+233A F119            649                     ACALL   ESCDADO 
+                     650                     
+233C D001            651                     POP             AR1
+233E D000            652                     POP             AR0
+2340 D0E0            653                     POP             ACC
+                     654                             
+2342 22              655     RET
+                     656     ;----------------------------------------------------------------------------
+                     657     ;FUNCAO PROXIMO ALIMENTO
+                     658     ;RETORNA O PROXIMO ALIMENTO DA LISTA
+                     659     ;-----------------------------------------------------------------------------
+2343                 660     PROXIMO_ALIMENTO:
+2343 E540            661             MOV A,ALIMENTO_ATUAL
+2345 04              662             INC A
+2346 F540            663             MOV ALIMENTO_ATUAL,A
+2348 7840            664             MOV R0,#ALIMENTO_ATUAL
+234A B40403          665             CJNE A,#NUM_ALIMENTO,ALIMENTO_STR
+234D 754000          666             MOV ALIMENTO_ATUAL,#0
+                     667             
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    12
+
+2350                 668             ALIMENTO_STR:
+                     669             
+2350 B60005          670             CJNE @R0,#0,PROX_0
+2353 902122          671             MOV DPTR,#STR_CARNE
+2356 8018            672             JMP IMPRIME_ALIMENTO
+2358                 673             PROX_0:
+                     674             
+2358 B60105          675             CJNE @R0,#1,PROX_1
+235B 90213B          676             MOV DPTR,#STR_PEIXE
+235E 8010            677             JMP IMPRIME_ALIMENTO    
+2360                 678             PROX_1:
+                     679             
+2360 B60205          680             CJNE @R0,#2,PROX_2
+2363 902154          681             MOV DPTR,#STR_FRANGO
+2366 8008            682             JMP IMPRIME_ALIMENTO
+2368                 683             PROX_2:
+                     684             
+2368 B60305          685             CJNE @R0,#3,PROX_3
+236B 90216D          686             MOV DPTR,#STR_TESTE
+236E 8000            687             JMP IMPRIME_ALIMENTO
+2370                 688             PROX_3:
+                     689             
+2370                 690             IMPRIME_ALIMENTO:
+2370 F14D            691             CALL   ESC_STR2
+                     692             
+2372 22              693     RET
+                     694     ;-----------------------------------------------------------------------------------------
+                     695     ;FUNCAO PROXIMO PONTO
+                     696     ;RETORNA O PROXIMO ALIMENTO DA LISTA
+                     697     ;-----------------------------------------------------------------------------------------
+2373                 698     PROXIMO_PONTO:
+2373 E541            699             MOV A,PONTO_ATUAL
+2375 04              700             INC A
+2376 F541            701             MOV PONTO_ATUAL,A
+2378 7841            702             MOV R0,#PONTO_ATUAL
+237A B40303          703             CJNE A,#3,PONTO_STR
+237D 754100          704             MOV PONTO_ATUAL,#0
+                     705     
+                     706             
+2380                 707             PONTO_STR:
+                     708             
+2380 B60005          709             CJNE @R0,#0,PROX_0_PONTO
+2383 902186          710             MOV DPTR,#STR_CARNE_MP
+2386 8010            711             JMP IMPRIME_PONTO
+2388                 712             PROX_0_PONTO:
+                     713             
+2388 B60105          714             CJNE @R0,#1,PROX_1_PONTO
+238B 902197          715             MOV DPTR,#STR_CARNE_AP
+238E 8008            716             JMP IMPRIME_PONTO       
+2390                 717             PROX_1_PONTO:
+                     718     
+2390 B60205          719             CJNE @R0,#2,PROX_2_PONTO
+2393 9021A8          720             MOV DPTR,#STR_CARNE_BP
+2396 8000            721             JMP IMPRIME_PONTO       
+2398                 722             PROX_2_PONTO:
+                     723             
+2398                 724             IMPRIME_PONTO:
+2398 F14D            725             CALL   ESC_STR2
+                     726             
+239A 22              727     RET
+                     728     ;-----------------------------------------------------------------------------------------
+                     729     ; Rotina para ligar o RTC
+                     730     ;-----------------------------------------------------------------------------------------
+239B                 731     INICIAR_RTC:
+239B 758901          732             MOV TMOD, #1
+239E 758C3C          733             MOV TH0,#HIGH(RESET_VALUE)
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    13
+
+23A1 758AB0          734             MOV TL0,#LOW(RESET_VALUE)
+23A4 D2A9            735             SETB ET0
+23A6 D2AF            736             SETB EA
+23A8 D28C            737             SETB TR0
+                     738     
+23AA 22              739     RET
+                     740     ;-----------------------------------------------------------------------------------------
+                     741     ; Rotina para desligar o RTC
+                     742     ;-----------------------------------------------------------------------------------------
+23AB                 743     DESLIGAR_RTC:
+23AB C28C            744             CLR TR0
+23AD C2A9            745             CLR ET0
+23AF D2B7            746             SETB LEDAM
+23B1 C294            747             CLR  LEDVM
+23B3 22              748     RET
+                     749     ;-----------------------------------------------------------------------------------------
+                     750     ; Rotina de inicializacao
+                     751     ;-----------------------------------------------------------------------------------------
+23B4                 752     INICIALIZAR_VARIAVEIS:
+23B4 7E00            753             MOV R6,#0
+23B6 7F00            754             MOV     R7,#0
+23B8 755700          755             MOV FLAG,#0
+23BB 754000          756             MOV ALIMENTO_ATUAL,#0
+23BE 754100          757             MOV PONTO_ATUAL,#0
+23C1 754400          758             MOV SEGUNDOS,#0
+23C4 754500          759             MOV MINUTOS,#0
+23C7 754600          760             MOV HORAS,#0
+23CA 754714          761             MOV TICKS,#20
+23CD 7410            762             MOV A,#16
+23CF 2448            763             ADD A,#STR_TEMP
+23D1 F8              764             MOV R0,A
+23D2 7400            765             MOV A,#00h
+23D4 F2              766             MOVX @R0,A
+23D5 7420            767             MOV A,#' '
+                     768             
+23D7 7910            769             MOV R1,#16
+23D9                 770             INICIA_VOLTA:
+23D9 18              771                     DEC R0
+23DA F2              772                     MOVX @R0,A
+23DB D9FC            773                     DJNZ R1,INICIA_VOLTA 
+                     774     
+23DD 743A            775                     MOV A,#':'
+23DF 7852            776                     MOV R0,#STR_2P0
+23E1 F2              777                     MOVX @R0,A
+23E2 743A            778                     MOV A,#':'
+23E4 7855            779                     MOV R0,#STR_2P1
+23E6 F2              780                     MOVX @R0,A      
+23E7 22              781     RET
+                     782     ;-----------------------------------------------------------------------------------------
+                     783     ; Rotina que transforma em ASCII para escrever no display
+                     784     ; Recebe em R0 o endereco do registrador. Retorna em A o mais significativo e em B o menos
+                     785     ;-----------------------------------------------------------------------------------------
+23E8                 786     REG_TO_ASCII:
+23E8 E6              787             MOV A,@R0
+23E9 75F00A          788             MOV B,#10
+23EC 84              789             DIV AB
+23ED C0E0            790             PUSH ACC
+23EF E5F0            791             MOV A,B
+23F1 2430            792             ADD A,#30h
+23F3 F5F0            793             MOV B,A
+23F5 D0E0            794             POP ACC
+23F7 2430            795             ADD A,#30h
+23F9 22              796     RET
+                     797     ;-----------------------------------------------------------------------------------------
+                     798     ;       Rotina de atualizacao do tempo na tela
+                     799     ;-----------------------------------------------------------------------------------------
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    14
+
+23FA                 800     ATUALIZA_STR_TEMP:
+                     801             ; horas
+23FA 7846            802             MOV R0,#HORAS
+                     803             
+23FC 71E8            804             CALL REG_TO_ASCII
+23FE 7950            805             MOV R1,#STR_HRS
+2400 F3              806             MOVX @R1,A
+2401 09              807             INC R1
+2402 E5F0            808             MOV A,B
+2404 F3              809             MOVX @R1,A
+                     810             
+                     811             ; min
+2405 7845            812             MOV R0,#MINUTOS
+                     813             
+2407 71E8            814             CALL REG_TO_ASCII
+2409 7953            815             MOV R1,#STR_MIN
+240B F3              816             MOVX @R1,A
+240C 09              817             INC R1
+240D E5F0            818             MOV A,B
+240F F3              819             MOVX @R1,A
+                     820             
+                     821             ; seg
+2410 7844            822             MOV R0,#SEGUNDOS
+                     823             
+2412 71E8            824             CALL REG_TO_ASCII
+2414 7956            825             MOV R1,#STR_SEG
+2416 F3              826             MOVX @R1,A
+2417 09              827             INC R1
+2418 E5F0            828             MOV A,B
+241A F3              829             MOVX @R1,A
+                     830             
+241B 22              831     RET
+                     832     ;-----------------------------------------------------------------------------------------
+                     833     ;       Rotina de leitura do ADC
+                     834     ;-----------------------------------------------------------------------------------------
+241C                 835     LEITURA_ADC:
+241C C291            836             CLR             SPI_ADC_CS
+                     837                                     
+241E 7803            838             MOV             R0,     #0x03
+2420 79C0            839             MOV             R1, #11000000b
+2422 9136            840             CALL    SPI_R_TX
+                     841                     
+2424 7808            842             MOV             R0,     #0x08
+2426 7900            843             MOV             R1, #00000000b
+2428 9136            844             CALL    SPI_R_TX
+242A 8830            845             MOV     ADC_V_RAW,R0
+                     846             
+242C D291            847             SETB    SPI_ADC_CS
+242E 22              848             RET
+                     849     ;-----------------------------------------------------------------------------------------
+                     850     ;       Subrotina de inicialização da comunicação SPI por software. Os pinos de
+                     851     ;        MISO, MOSI e CLK já devem estar previamente definidos.
+                     852     ;-----------------------------------------------------------------------------------------
+242F                 853     SPI_R_INIT:
+242F D295            854             SETB    SPI_MISO
+2431 D297            855             SETB    SPI_MOSI
+2433 D296            856             SETB    SPI_CLK
+2435 22              857             RET                                                             
+                     858     ;-----------------------------------------------------------------------------------------
+                     859     ;       Nome:           SPI_R_TX
+                     860     ;       Descricao:      Subrotina de envio/recebimento de um dado via interface SPI por sof
+                             tware.
+                     861     ;                               OBS: O pino de CS do periférico ja deve estar devidamente a
+                             tivado.
+                     862     ;       Parametros de entrada:
+                     863     ;                               R0: Numero de bits
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    15
+
+                     864     ;                               R1:     Byte a ser transmitido
+                     865     ;       Parametro de saida:
+                     866     ;                               R0:     Byte recebido
+                     867     ;-----------------------------------------------------------------------------------------
+2436                 868     SPI_R_TX:
+2436 C0E0            869                     PUSH    ACC                                                             ; p
+                             rotege ACC
+2438 C0F0            870                     PUSH    B                                                               ; p
+                             rotege B
+                     871                     
+243A C296            872                     CLR             SPI_CLK                                                 ; i
+                             nicia o clock em 0
+243C 88F0            873                     MOV             B,      R0                                                 
+                                  ; B terá o numero de bits a transmitir
+                     874     
+243E                 875             SPI_R_TX_JMP0:  
+243E E9              876                             MOV             A,      R1                                         
+                                          ; rola o byte para colocar  
+243F 33              877                             RLC             A                                                  
+                                          ; cada bit no carry
+2440 F9              878                             MOV             R1, A                                              
+                                  ; e entao
+2441 9297            879                             MOV             SPI_MOSI,       C                                  
+                                  ; enviar para o pino MOSI
+                     880                             
+2443 00              881                             NOP
+2444 D296            882                             SETB    SPI_CLK                                                 ; d
+                             a um pulso de clock
+2446 00              883                             NOP
+2447 00              884                             NOP
+2448 00              885                             NOP
+2449 C296            886                             CLR             SPI_CLK
+                     887                             
+244B E8              888                             MOV     A,      R0                                                 
+                                  
+244C A295            889                             MOV             C,      SPI_MISO                                   
+                                  ; recebe um bit simultaneamente
+244E 33              890                             RLC             A
+244F F8              891                             MOV             R0,     A                                          
+                                          ; e salva em R0
+                     892                             
+2450 D5F0EB          893                             DJNZ    B,      SPI_R_TX_JMP0                           ; repete pa
+                             ra resto dos bits
+                     894                             
+2453 D0F0            895                             POP             B                                                  
+                                          ; restaura B
+2455 D0E0            896                             POP             ACC                                                
+                                          ; restaura ACC
+                     897     
+2457 22              898                             RET                             
+                     899     ;-----------------------------------------------------------------------------------------
+                     900     ;       Rotina de interrupção do Timer 0                                        
+                     901     ;-----------------------------------------------------------------------------------------
+2458                 902     TIMER0_IRQ:
+2458 C0E0            903             PUSH ACC
+245A 758C3C          904             MOV TH0,#HIGH RESET_VALUE 
+245D 758AB0          905             MOV TL0,#LOW RESET_VALUE
+                     906     
+2460 D54722          907             DJNZ TICKS,EXIT_RTC         ;Decrementa TICKS, se não é zero exit imediatamente 
+2463 754728          908             MOV TICKS,#(QUANTA)               ;reseta em 20, pois assim o countdown está pronto
+                              para passar outro segundo
+                     909             ;dec segundo
+2466 E544            910             MOV A,SEGUNDOS
+2468 7016            911             JNZ DEC_SEG
+246A 75443C          912             MOV SEGUNDOS,#60
+                     913             ;dec minutos
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    16
+
+246D E545            914             MOV A,MINUTOS
+246F 700D            915             JNZ DEC_MIN
+2471 75453C          916             MOV MINUTOS,#60
+                     917             ;dec hora
+2474 E546            918             MOV A,HORAS
+2476 7004            919             JNZ DEC_HORA
+2478 71AB            920             CALL DESLIGAR_RTC
+247A 8009            921             JMP EXIT_RTC
+                     922             
+247C                 923             DEC_HORA:
+247C 1546            924             DEC HORAS
+247E                 925             DEC_MIN:
+247E 1545            926             DEC MINUTOS     
+2480                 927             DEC_SEG:
+2480 1544            928             DEC SEGUNDOS
+2482 755901          929             MOV NOVO_SEGUNDO,#1
+                     930     
+                     931     
+2485                 932     EXIT_RTC:
+2485 D0E0            933             POP ACC            
+                     934     
+2487 32              935     RETI
+                     936     ;-----------------------------------------------------------------------------------------
+                     937     ;FUNCAO CHECK_DOWN'
+                     938     ;FAZ O DEBOUNCE DA CHAVE. RETORNA 1 SE ESTA ATIVA OU 0 SE ESTA INATIVA
+                     939     ;SAIDA: ACUMULADOR
+                     940     ;UTILIZA: A, R0
+                     941     ;------------------------------------------------------------------------------------------
+2488                 942     CHECK_DOWN:
+2488 20B412          943             JB SW_DOWN,CHECK_DOWN_RET0 ; se nao esta ativo volta de primeira
+248B 74FF            944             MOV A,#255
+                     945             
+248D                 946             CHECK_DOWN_LOOP:
+248D 7864            947                     MOV R0,#100
+248F                 948                             CHECK_DOWN_LOOP2:
+248F 20B40B          949                                     JB SW_DOWN,CHECK_DOWN_RET0 ; se nao for ativo durante um te
+                             mpo, sai da funcao
+2492 D8FB            950                             DJNZ R0,CHECK_DOWN_LOOP2
+2494 D5E0F6          951                     DJNZ ACC,CHECK_DOWN_LOOP
+                     952             
+2497 7401            953             MOV A,#1
+2499                 954             RELEASE_DOWN: 
+2499 30B4FD          955             JNB SW_DOWN,RELEASE_DOWN
+249C 22              956             RET
+                     957             
+249D                 958             CHECK_DOWN_RET0:
+249D 7400            959             MOV A,#0
+249F 22              960     RET
+                     961     ;-----------------------------------------------------------------------------------------
+                     962     ;FUNCAO CHECK_ENTER
+                     963     ;FAZ O DEBOUNCE DA CHAVE. RETORNA 1 SE ESTA ATIVA OU 0 SE ESTA INATIVA
+                     964     ;SAIDA: ACUMULADOR
+                     965     ;UTILIZA: A, R0
+                     966     ;------------------------------------------------------------------------------------------
+24A0                 967     CHECK_ENTER:
+24A0 20B212          968             JB SW_ENTER,CHECK_ENTER_RET0 ; se nao esta ativo volta de primeira
+24A3 74FF            969             MOV A,#255
+                     970             
+24A5                 971             CHECK_ENTER_LOOP:
+24A5 7864            972                     MOV R0,#100
+24A7                 973                             CHECK_ENTER_LOOP2:
+24A7 20B20B          974                                     JB SW_ENTER,CHECK_ENTER_RET0 ; se nao for ativo durante um 
+                             tempo, sai da funcao
+24AA D8FB            975                             DJNZ R0,CHECK_ENTER_LOOP2
+24AC D5E0F6          976                     DJNZ ACC,CHECK_ENTER_LOOP
+                     977             
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    17
+
+24AF 7401            978             MOV A,#1
+24B1                 979             RELEASE_ENTER: 
+24B1 30B2FD          980             JNB SW_ENTER,RELEASE_ENTER
+24B4 22              981             RET
+                     982             
+24B5                 983             CHECK_ENTER_RET0:
+24B5 7400            984             MOV A,#0
+24B7 22              985     RET
+                     986     ;-----------------------------------------------------------------------------------------
+                     987     ;       Look-up Table para converter de um valor 
+                     988     ;-----------------------------------------------------------------------------------------
+24B8                 989     TABLE_LM35_LOW_TO_BCD:
+24B8 04081216        990             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24,   0x28,   0x32,   0x36,   0x4
+                             0
+24BC 20242832                
+24C0 3640                    
+24C2 44485256        991             DB      0x44,   0x48,   0x52,   0x56,   0x60,   0x64,   0x68,   0x72,   0x76,   0x8
+                             0
+24C6 60646872                
+24CA 7680                    
+24CC 84889296        992             DB      0x84,   0x88,   0x92,   0x96,   0x00,   0x04,   0x08,   0x12,   0x16,   0x2
+                             0
+24D0 00040812                
+24D4 1620                    
+24D6 24283236        993             DB      0x24,   0x28,   0x32,   0x36,   0x40,   0x44,   0x48,   0x52,   0x56,   0x6
+                             0
+24DA 40444852                
+24DE 5660                    
+24E0 64687276        994             DB      0x64,   0x68,   0x72,   0x76,   0x80,   0x84,   0x88,   0x92,   0x96,   0x0
+                             0
+24E4 80848892                
+24E8 9600                    
+24EA 04081216        995             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24,   0x28,   0x32,   0x36,   0x4
+                             0
+24EE 20242832                
+24F2 3640                    
+24F4 44485256        996             DB      0x44,   0x48,   0x52,   0x56,   0x60,   0x64,   0x68,   0x72,   0x76,   0x8
+                             0
+24F8 60646872                
+24FC 7680                    
+24FE 84889296        997             DB      0x84,   0x88,   0x92,   0x96,   0x00,   0x04,   0x08,   0x12,   0x16,   0x2
+                             0
+2502 00040812                
+2506 1620                    
+2508 24283236        998             DB      0x24,   0x28,   0x32,   0x36,   0x40,   0x44,   0x48,   0x52,   0x56,   0x6
+                             0
+250C 40444852                
+2510 5660                    
+2512 64687276        999             DB      0x64,   0x68,   0x72,   0x76,   0x80,   0x84,   0x88,   0x92,   0x96,   0x0
+                             0
+2516 80848892                
+251A 9600                    
+251C 04081216       1000             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24,   0x28,   0x32,   0x36,   0x4
+                             0
+2520 20242832                
+2524 3640                    
+2526 44485256       1001             DB      0x44,   0x48,   0x52,   0x56,   0x60,   0x64,   0x68,   0x72,   0x76,   0x8
+                             0
+252A 60646872                
+252E 7680                    
+2530 84889296       1002             DB      0x84,   0x88,   0x92,   0x96,   0x00,   0x04,   0x08,   0x12,   0x16,   0x2
+                             0
+2534 00040812                
+2538 1620                    
+253A 24283236       1003             DB      0x24,   0x28,   0x32,   0x36,   0x40,   0x44,   0x48,   0x52,   0x56,   0x6
+                             0
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    18
+
+253E 40444852                
+2542 5660                    
+2544 64687276       1004             DB      0x64,   0x68,   0x72,   0x76,   0x80,   0x84,   0x88,   0x92,   0x96,   0x0
+                             0
+2548 80848892                
+254C 9600                    
+254E 04081216       1005             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24,   0x28,   0x32,   0x36,   0x4
+                             0
+2552 20242832                
+2556 3640                    
+2558 44485256       1006             DB      0x44,   0x48,   0x52,   0x56,   0x60,   0x64,   0x68,   0x72,   0x76,   0x8
+                             0
+255C 60646872                
+2560 7680                    
+2562 84889296       1007             DB      0x84,   0x88,   0x92,   0x96,   0x00,   0x04,   0x08,   0x12,   0x16,   0x2
+                             0
+2566 00040812                
+256A 1620                    
+256C 24283236       1008             DB      0x24,   0x28,   0x32,   0x36,   0x40,   0x44,   0x48,   0x52,   0x56,   0x6
+                             0
+2570 40444852                
+2574 5660                    
+2576 64687276       1009             DB      0x64,   0x68,   0x72,   0x76,   0x80,   0x84,   0x88,   0x92,   0x96,   0x0
+                             0
+257A 80848892                
+257E 9600                    
+2580 04081216       1010             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24,   0x28,   0x32,   0x36,   0x4
+                             0
+2584 20242832                
+2588 3640                    
+258A 44485256       1011             DB      0x44,   0x48,   0x52,   0x56,   0x60,   0x64,   0x68,   0x72,   0x76,   0x8
+                             0
+258E 60646872                
+2592 7680                    
+2594 84889296       1012             DB      0x84,   0x88,   0x92,   0x96,   0x00,   0x04,   0x08,   0x12,   0x16,   0x2
+                             0
+2598 00040812                
+259C 1620                    
+259E 24283236       1013             DB      0x24,   0x28,   0x32,   0x36,   0x40,   0x44,   0x48,   0x52,   0x56,   0x6
+                             0
+25A2 40444852                
+25A6 5660                    
+25A8 64687276       1014             DB      0x64,   0x68,   0x72,   0x76,   0x80,   0x84,   0x88,   0x92,   0x96,   0x0
+                             0
+25AC 80848892                
+25B0 9600                    
+25B2 04081216       1015             DB      0x04,   0x08,   0x12,   0x16,   0x20,   0x24
+25B6 2024                    
+                    1016     ;-----------------------------------------------------------------------------------------
+25B8                1017     TABLE_LM35_HIGH_TO_BCD:
+25B8 00000000       1018             DB      0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x0
+                             0
+25BC 00000000                
+25C0 0000                    
+25C2 00000000       1019             DB      0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x00,   0x0
+                             0
+25C6 00000000                
+25CA 0000                    
+25CC 00000000       1020             DB      0x00,   0x00,   0x00,   0x00,   0x01,   0x01,   0x01,   0x01,   0x01,   0x0
+                             1
+25D0 01010101                
+25D4 0101                    
+25D6 01010101       1021             DB      0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x0
+                             1
+25DA 01010101                
+25DE 0101                    
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    19
+
+25E0 01010101       1022             DB      0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x01,   0x0
+                             2
+25E4 01010101                
+25E8 0102                    
+25EA 02020202       1023             DB      0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x0
+                             2
+25EE 02020202                
+25F2 0202                    
+25F4 02020202       1024             DB      0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x02,   0x0
+                             2
+25F8 02020202                
+25FC 0202                    
+25FE 02020202       1025             DB      0x02,   0x02,   0x02,   0x02,   0x03,   0x03,   0x03,   0x03,   0x03,   0x0
+                             3
+2602 03030303                
+2606 0303                    
+2608 03030303       1026             DB      0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x0
+                             3
+260C 03030303                
+2610 0303                    
+2612 03030303       1027             DB      0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x03,   0x0
+                             4
+2616 03030303                
+261A 0304                    
+261C 04040404       1028             DB      0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x0
+                             4
+2620 04040404                
+2624 0404                    
+2626 04040404       1029             DB      0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x04,   0x0
+                             4
+262A 04040404                
+262E 0404                    
+2630 04040404       1030             DB      0x04,   0x04,   0x04,   0x04,   0x05,   0x05,   0x05,   0x05,   0x05,   0x0
+                             5
+2634 05050505                
+2638 0505                    
+263A 05050505       1031             DB      0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x0
+                             5
+263E 05050505                
+2642 0505                    
+2644 05050505       1032             DB      0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x05,   0x0
+                             6
+2648 05050505                
+264C 0506                    
+264E 06060606       1033             DB      0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x0
+                             6
+2652 06060606                
+2656 0606                    
+2658 06060606       1034             DB      0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x06,   0x0
+                             6
+265C 06060606                
+2660 0606                    
+2662 06060606       1035             DB      0x06,   0x06,   0x06,   0x06,   0x07,   0x07,   0x07,   0x07,   0x07,   0x0
+                             7
+2666 07070707                
+266A 0707                    
+266C 07070707       1036             DB      0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x0
+                             7
+2670 07070707                
+2674 0707                    
+2676 07070707       1037             DB      0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x07,   0x0
+                             8
+267A 07070707                
+267E 0708                    
+2680 08080808       1038             DB      0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x0
+                             8
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    20
+
+2684 08080808                
+2688 0808                    
+268A 08080808       1039             DB      0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x08,   0x0
+                             8
+268E 08080808                
+2692 0808                    
+2694 08080808       1040             DB      0x08,   0x08,   0x08,   0x08,   0x09,   0x09,   0x09,   0x09,   0x09,   0x0
+                             9
+2698 09090909                
+269C 0909                    
+269E 09090909       1041             DB      0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x0
+                             9
+26A2 09090909                
+26A6 0909                    
+26A8 09090909       1042             DB      0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x09,   0x0
+                             9
+26AC 09090909                
+26B0 0909                    
+26B2 10101010       1043             DB      0x10,   0x10,   0x10,   0x10,   0x10,   0x10
+26B6 1010                    
+                    1044     ;-----------------------------------------------------------------------------------------
+                    1045     ;***************************************************************************
+                    1046     ;ROTINAS DE TRATAMENTO DO DISPLAY DE CRISTAL LIQUIDO 16X2
+                    1047     ;***************************************************************************
+                    1048     ;NOME: INIDISP
+                    1049     ;DESCRICAO: ROTINA DE INICIALIZACAO DO DISPLAY LCD 2x16
+                    1050     ;               PROGRAMA CARACTER 5x7, LIMPA DISPLAY E POSICIONA (0,0)
+                    1051     ;ENTRADA: -
+                    1052     ;SAIDA: -
+                    1053     ;ALTERA: R0,R2
+                    1054     
+26B8                1055     INIDISP:                       
+26B8 7838           1056             MOV     R0,#38H         ;UTILIZACAO: 8 BITS, 2 LINHAS, 5x7
+26BA 7A05           1057             MOV     R2,#05          ;ESPERA 5ms
+26BC D1D7           1058             CALL    ESCINST         ;ENVIA A INSTRUCAO
+26BE 7838           1059             MOV     R0,#38H         ;UTILIZACAO: 8 BITS, 2 LINHAS, 5x7
+26C0 7A01           1060             MOV     R2,#01          ;ESPERA 1ms
+26C2 D1D7           1061             CALL    ESCINST         ;ENVIA A INSTRUCAO
+26C4 7806           1062             MOV     R0,#06H         ;INSTRUCAO DE MODO DE OPERACAO
+26C6 7A01           1063             MOV     R2,#01          ;ESPERA 1ms
+26C8 D1D7           1064             CALL    ESCINST         ;ENVIA A INSTRUCAO
+26CA 780C           1065             MOV     R0,#0CH         ;INSTRUCAO DE CONTROLE ATIVO/INATIVO
+26CC 7A01           1066             MOV     R2,#01          ;ESPERA 1ms
+26CE D1D7           1067             CALL    ESCINST         ;ENVIA A INSTRUCAO
+26D0 7801           1068             MOV     R0,#01H         ;INSTRUCAO DE LIMPEZA DO DISPLAY
+26D2 7A02           1069             MOV     R2,#02          ;ESPERA 2ms
+26D4 D1D7           1070             CALL    ESCINST         ;ENVIA A INSTRUCAO
+26D6 22             1071             RET
+                    1072     
+                    1073     ;***************************************************************************
+                    1074     ;NOME: ESCINST
+                    1075     ;DESCRICAO: ROTINA QUE ESCREVE INSTRUCAO PARA O DISPLAY E ESPERA DESOCUPAR
+                    1076     ;P.ENTRADA: R0 = INSTRUCAO A SER ESCRITA NO MODULO DISPLAY
+                    1077     ;           R2 = TEMPO DE ESPERA EM ms
+                    1078     ;P.SAIDA: -
+                    1079     ;ALTERA: R0,R2
+                    1080     
+26D7                1081     ESCINST:  
+26D7 C2A6           1082             CLR     RW              ;MODO ESCRITA NO LCD
+26D9 C2A5           1083             CLR     RS              ;RS  = 0 (SELECIONA REG. DE INSTRUCOES)
+26DB D2A7           1084             SETB    E_LCD           ;E = 1 (HABILITA LCD)
+26DD 8880           1085             MOV     P0,R0           ;INSTRUCAO A SER ESCRITA
+26DF C2A7           1086             CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+26E1 7580FF         1087             MOV     P0,#0xFF        ;PORTA 0 COMO ENTRADA
+26E4 D2A6           1088             SETB    RW              ;MODO LEITURA NO LCD    
+26E6 D2A7           1089             SETB    E_LCD           ;E = 1 (HABILITA LCD)   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    21
+
+26E8 2087FD         1090     ESCI1:  JB      BUSYF,ESCI1     ;ESPERA BUSY FLAG = 0
+26EB C2A7           1091             CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+26ED 22             1092             RET
+                    1093     
+                    1094     ;***************************************************************************
+                    1095     ;NOME: GOTOXY
+                    1096     ;DESCRICAO: ROTINA QUE POSICIONA O CURSOR
+                    1097     ;P.ENTRADA: R0 = LINHA (0 A 1)
+                    1098     ;           R1 = COLUNA (0 A 15)
+                    1099     ;P.SAIDA: -
+                    1100     ;DESTROI: R0,R2
+26EE C0E0           1101     GOTOXY: PUSH    ACC
+26F0 7480           1102             MOV     A,#80H
+26F2 B80102         1103             CJNE    R0,#01,GT1      ;SALTA SE COLUNA 0
+26F5 74C0           1104             MOV     A,#0C0H
+26F7 49             1105     GT1:    ORL     A,R1            ;CALCULA O ENDERECO DA MEMORIA DD RAM
+26F8 F8             1106             MOV     R0,A
+26F9 7A01           1107             MOV     R2,#01          ;ESPERA 1ms               
+26FB D1D7           1108             CALL    ESCINST         ;ENVIA PARA O MODULO DISPLAY
+26FD D0E0           1109             POP     ACC
+26FF 22             1110             RET
+                    1111                     
+                    1112     
+                    1113     ;***************************************************************************
+                    1114     ;NOME: CLR2L
+                    1115     ;DESCRICAO: ROTINA QUE APAGA SEGUNDA LINHA DO DISPLAY LCD E POSICIONA NO INICIO
+                    1116     ;ENTRADA: -
+                    1117     ;SAIDA: -
+                    1118     ;DESTROI: R0,R1
+2700                1119     CLR2L:    
+2700 C0E0           1120             PUSH   ACC
+2702 7801           1121             MOV    R0,#01              ;LINHA
+2704 7900           1122             MOV    R1,#00
+2706 D1EE           1123             CALL   GOTOXY
+2708 7910           1124             MOV    R1,#16              ;CONTADOR
+270A 7420           1125     CLR2L1: MOV    A,#' '              ;ESPACO
+270C F119           1126             CALL   ESCDADO
+270E D9FA           1127             DJNZ   R1,CLR2L1
+2710 7801           1128             MOV    R0,#01              ;LINHA
+2712 7900           1129             MOV    R1,#00
+2714 D1EE           1130             CALL   GOTOXY
+2716 D0E0           1131             POP    ACC
+2718 22             1132             RET
+                    1133                
+                    1134     ;***************************************************************************
+                    1135     ;NOME: ESCDADO
+                    1136     ;DESCRICAO: ROTINA QUE ESCREVE DADO PARA O DISPLAY
+                    1137     ;ENTRADA: A = DADO A SER ESCRITA NO MODULO DISPLAY
+                    1138     ;SAIDA: -
+                    1139     ;DESTROI: R0           
+2719                1140     ESCDADO:  
+2719 C2A6           1141             CLR     RW              ;MODO ESCRITA NO LCD
+271B D2A5           1142             SETB    RS              ;RS  = 1 (SELECIONA REG. DE DADOS)
+271D D2A7           1143             SETB    E_LCD           ;LCD = 1 (HABILITA LCD)
+271F F580           1144             MOV     P0,A            ;ESCREVE NO BUS DE DADOS
+2721 C2A7           1145             CLR     E_LCD           ;LCD = 0 (DESABILITA LCD)
+2723 7580FF         1146             MOV     P0,#0xFF        ;PORTA 0 COMO ENTRADA
+2726 D2A6           1147             SETB    RW              ;MODO LEITURA NO LCD
+2728 C2A5           1148             CLR     RS              ;RS = 0 (SELECIONA INSTRUÇÃO)   
+272A D2A7           1149             SETB    E_LCD           ;E = 1 (HABILITA LCD)
+272C 2087FD         1150     ESCD1:  JB      BUSYF,ESCD1     ;ESPERA BUSY FLAG = 0
+272F C2A7           1151             CLR     E_LCD           ;E = 0 (DESABILITA LCD)
+                    1152     ;        MOV     R0,#14          ;40uS
+                    1153     ;        CALL    ATRASO
+2731 22             1154             RET
+                    1155     
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    22
+
+                    1156     ;*****************************************************************************
+                    1157     ;NOME: MSTRING
+                    1158     ;ROTINA QUE ESCREVE UMA STRING DA ROM NO DISPLAY A PARTIR DA POSICAO DO CURSOR
+                    1159     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                    1160     ;SAIDA: -
+                    1161     ;DESTROI: A,DPTR,R0
+2732 E4             1162     MSTRING:  CLR    A
+2733 93             1163               MOVC   A,@A+DPTR      ;CARACTER DA MENSAGEM EM A
+2734 6006           1164               JZ     MSTR1
+2736 122719         1165               LCALL  ESCDADO        ;ESCREVE O DADO NO DISPLAY
+2739 A3             1166               INC    DPTR
+273A 80F6           1167               SJMP   MSTRING
+273C 22             1168     MSTR1:    RET
+                    1169                
+                    1170     ;*****************************************************************************
+                    1171     ;NOME: MSTRINGX
+                    1172     ;ROTINA QUE ESCREVE UMA STRING DA RAM NO DISPLAY A PARTIR DA POSICAO DO CURSOR
+                    1173     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA RAM FINALIZADA POR 00H
+                    1174     ;SAIDA: -
+                    1175     ;DESTROI: A,DPTR,R0
+273D E0             1176     MSTRINGX: MOVX   A,@DPTR        ;CARACTER DA MENSAGEM EM A
+273E 6006           1177               JZ     MSTR21
+2740 122719         1178               LCALL  ESCDADO        ;ESCREVE O DADO NO DISPLAY
+2743 A3             1179               INC    DPTR
+2744 80F7           1180               SJMP   MSTRINGX
+2746 22             1181     MSTR21:   RET
+                    1182                
+                    1183     ;*****************************************************************************
+                    1184     ;NOME: ESC_STR1
+                    1185     ;ROTINA QUE ESCREVE UMA STRING NO DISPLAY A PARTIR DO INICIO DA PRIMEIRA LINHA
+                    1186     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                    1187     ;SAIDA: -
+                    1188     ;DESTROI: R0,A,DPTR
+2747 7800           1189     ESC_STR1: MOV    R0,#00         ;PRIMEIRA LINHA E PRIMEIRA COLUNA
+2749 7900           1190               MOV    R1,#00
+274B 8004           1191               JMP    ESC_S
+                    1192               
+                    1193     ;*****************************************************************************
+                    1194     ;NOME: ESC_STR2
+                    1195     ;ROTINA QUE ESCREVE UMA STRING NO DISPLAY A PARTIR DO INICIO DA SEGUNDA LINHA
+                    1196     ;ENTRADA: DPTR = ENDERECO INICIAL DA STRING NA MEMORIA ROM FINALIZADA POR 00H
+                    1197     ;SAIDA: -
+                    1198     ;DESTROI: R0,A,DPTR
+274D 7801           1199     ESC_STR2: MOV    R0,#01         ;SEGUNDA LINHA E PRIMEIRA COLUNA
+274F 7900           1200               MOV    R1,#00
+2751 1226EE         1201     ESC_S:    LCALL  GOTOXY         ;POSICIONA O CURSOR
+2754 122732         1202               LCALL  MSTRING
+2757 22             1203               RET
+                    1204     
+                    1205     
+                    1206     ;******************************************************************************
+                    1207     ; NOME: CUR_ON E CUR_OFF
+                    1208     ; FUNCAO: ROTINA CUR_ON => LIGA CURSOR DO LCD
+                    1209     ;         ROTINA CUR_OFF => DESLIGA CURSOR DO LCD
+                    1210     ; CHAMA: ESCINST
+                    1211     ; ENTRADA: -
+                    1212     ; SAIDA: -
+                    1213     ; DESTROI: R0,R2
+                    1214     ;******************************************************************************
+                    1215     
+2758 780F           1216     CUR_ON:   MOV    R0,#0FH              ;INST.CONTROLE ATIVO (CUR ON)
+275A 8002           1217               SJMP   CUR1
+275C 780C           1218     CUR_OFF:  MOV    R0,#0CH              ;INST. CONTROLE INATIVO (CUR OFF)
+275E 7A01           1219     CUR1:     MOV    R2,#01
+2760 D1D7           1220               CALL   ESCINST              ;ENVIA A INSTRUCAO
+2762 22             1221               RET
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    23
+
+                    1222     
+                    1223     ;***************************************************************************
+                    1224     ;NOME: Atraso
+                    1225     ;DESCRIÇÃO: Introduz um atraso (delay) de T = (60 x R0 + 48)/fosc
+                    1226     ;       Para fosc = 11,059MHz => R0 = 1 => T = 9,8us  a  R0 = 0 => 1,4ms
+                    1227     ;P. ENTRADA: R0 = Valor que multiplica por 60 na fórmula (OBS.: R0 = 0 => 256)
+                    1228     ;P. SAIDA: -
+                    1229     ;Altera: R0
+                    1230     ;***************************************************************************
+2763                1231     Atraso:
+2763 00             1232             NOP                     ;12
+2764 00             1233             NOP                     ;12
+2765 00             1234             NOP                     ;12
+2766 D8FB           1235             DJNZ    R0,Atraso       ;24
+2768 22             1236             RET                     ;24
+                    1237     
+                    1238     
+                    1239     ;***************************************************************************
+                    1240     ;NOME: ATRASO_MS
+                    1241     ;DESCRICAO: INTRODUZ UM ATRASO DE 1ms A 256ms
+                    1242     ;P.ENTRADA: R2 = 1 => 1ms  A R2 = 0 => 256ms
+                    1243     ;P.SAIDA: -
+                    1244     ;ALTERA: R0,R2
+2769                1245     ATRASO_MS:
+2769 78B7           1246             MOV     R0,#183         ;VALOR PARA ATRASO DE 1ms
+276B F163           1247             CALL    Atraso
+276D 78B7           1248             MOV     R0,#183         ;VALOR PARA ATRASO DE 1ms
+276F F163           1249             CALL    Atraso
+2771 DAF6           1250             DJNZ    R2,ATRASO_MS
+2773 22             1251             RET             
+                    1252             
+                    1253     ;***************************************************************************
+                    1254     ;NOME: ATRASO_1S
+                    1255     ;***************************************************************************
+2774                1256     ATRASO_1S:
+2774 C000           1257             PUSH AR0
+2776 C001           1258             PUSH AR1
+2778 C002           1259             PUSH AR2
+                    1260             
+277A 7904           1261             MOV  R1,#4
+                    1262             
+277C                1263     ATRASO_1S_COUNT:
+277C 7AFA           1264             MOV  R2,#250
+277E F169           1265             CALL ATRASO_MS
+2780 D9FA           1266             DJNZ R1,ATRASO_1S_COUNT
+                    1267             
+2782 D000           1268             POP AR0
+2784 D001           1269             POP AR1
+2786 D002           1270             POP AR2
+                    1271             
+2788 22             1272             RET     
+                    1273             
+                    1274     ;***************************************************************************
+                    1275     ;NOME: ATRASO_500MS
+                    1276     ;***************************************************************************
+                    1277     
+2789                1278     ATRASO_500MS:
+2789 C000           1279             PUSH AR0
+278B C001           1280             PUSH AR1
+278D C002           1281             PUSH AR2
+                    1282             
+278F 7902           1283             MOV  R1,#2
+                    1284             
+2791                1285     ATRASO_500MS_COUNT:
+2791 7AFA           1286             MOV R2,#250
+2793 F169           1287             CALL ATRASO_MS
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    24
+
+2795 D9FA           1288             DJNZ R1,ATRASO_500MS_COUNT
+                    1289             
+2797 D000           1290             POP AR0
+2799 D001           1291             POP AR1
+279B D002           1292             POP AR2
+                    1293             
+279D 22             1294             RET     
+                    1295     
+                    1296     ;***************************************************************************
+                    1297     ;NOME: ATRASO_250MS
+                    1298     ;***************************************************************************
+                    1299     
+279E                1300     ATRASO_250MS:
+279E C000           1301             PUSH AR0
+27A0 C001           1302             PUSH AR1
+27A2 C002           1303             PUSH AR2
+                    1304             
+27A4 7901           1305             MOV R1,#1
+                    1306             
+27A6                1307     ATRASO_250MS_COUNT:
+27A6 7AFA           1308             MOV R2,#250
+27A8 F169           1309             CALL ATRASO_MS
+27AA D9FA           1310             DJNZ R1,ATRASO_250MS_COUNT
+                    1311             
+27AC D000           1312             POP AR0
+27AE D001           1313             POP AR1
+27B0 D002           1314             POP AR2
+                    1315             
+27B2 22             1316             RET             
+                    1317     
+                    1318     END
+                                     
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    25
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                        T Y P E  V A L U E   ATTRIBUTES
+
+ACC . . . . . . . . . . . . .  D ADDR   00E0H   A   
+ADC_V_RAW . . . . . . . . . .  N NUMB   0030H   A   
+ALIMENTO_ATUAL. . . . . . . .  N NUMB   0040H   A   
+ALIMENTO_STR. . . . . . . . .  C ADDR   2350H   A   
+AR0 . . . . . . . . . . . . .  D ADDR   0000H   A   
+AR1 . . . . . . . . . . . . .  D ADDR   0001H   A   
+AR2 . . . . . . . . . . . . .  D ADDR   0002H   A   
+ATRASO. . . . . . . . . . . .  C ADDR   2763H   A   
+ATRASO_1S . . . . . . . . . .  C ADDR   2774H   A   
+ATRASO_1S_COUNT . . . . . . .  C ADDR   277CH   A   
+ATRASO_250MS. . . . . . . . .  C ADDR   279EH   A   
+ATRASO_250MS_COUNT. . . . . .  C ADDR   27A6H   A   
+ATRASO_500MS. . . . . . . . .  C ADDR   2789H   A   
+ATRASO_500MS_COUNT. . . . . .  C ADDR   2791H   A   
+ATRASO_MS . . . . . . . . . .  C ADDR   2769H   A   
+ATUALIZA_STR_TEMP . . . . . .  C ADDR   23FAH   A   
+AUXR. . . . . . . . . . . . .  D ADDR   008EH   A   
+AUXR1 . . . . . . . . . . . .  D ADDR   00A2H   A   
+B . . . . . . . . . . . . . .  D ADDR   00F0H   A   
+BDRCON. . . . . . . . . . . .  D ADDR   009BH   A   
+BRL . . . . . . . . . . . . .  D ADDR   009AH   A   
+BUSYF . . . . . . . . . . . .  B ADDR   0080H.7 A   
+CALC_TEMPERATURA. . . . . . .  C ADDR   224DH   A   
+CCAP0H. . . . . . . . . . . .  D ADDR   00FAH   A   
+CCAP0L. . . . . . . . . . . .  D ADDR   00EAH   A   
+CCAP1H. . . . . . . . . . . .  D ADDR   00FBH   A   
+CCAP1L. . . . . . . . . . . .  D ADDR   00EBH   A   
+CCAP2H. . . . . . . . . . . .  D ADDR   00FCH   A   
+CCAP2L. . . . . . . . . . . .  D ADDR   00ECH   A   
+CCAP3H. . . . . . . . . . . .  D ADDR   00FDH   A   
+CCAP3L. . . . . . . . . . . .  D ADDR   00EDH   A   
+CCAP4H. . . . . . . . . . . .  D ADDR   00FEH   A   
+CCAP4L. . . . . . . . . . . .  D ADDR   00EEH   A   
+CCAPM0. . . . . . . . . . . .  D ADDR   00DAH   A   
+CCAPM1. . . . . . . . . . . .  D ADDR   00DBH   A   
+CCAPM2. . . . . . . . . . . .  D ADDR   00DCH   A   
+CCAPM3. . . . . . . . . . . .  D ADDR   00DDH   A   
+CCAPM4. . . . . . . . . . . .  D ADDR   00DEH   A   
+CCF0. . . . . . . . . . . . .  B ADDR   00D8H.0 A   
+CCF1. . . . . . . . . . . . .  B ADDR   00D8H.1 A   
+CCF2. . . . . . . . . . . . .  B ADDR   00D8H.2 A   
+CCF3. . . . . . . . . . . . .  B ADDR   00D8H.3 A   
+CCF4. . . . . . . . . . . . .  B ADDR   00D8H.4 A   
+CCON. . . . . . . . . . . . .  D ADDR   00D8H   A   
+CF. . . . . . . . . . . . . .  B ADDR   00D8H.7 A   
+CH. . . . . . . . . . . . . .  D ADDR   00F9H   A   
+CHAMA_PROXIMO_ALIMENTO. . . .  C ADDR   21E9H   A   
+CHAMA_PROXIMO_PONTO . . . . .  C ADDR   21FFH   A   
+CHECK_DOWN. . . . . . . . . .  C ADDR   2488H   A   
+CHECK_DOWN_LOOP . . . . . . .  C ADDR   248DH   A   
+CHECK_DOWN_LOOP2. . . . . . .  C ADDR   248FH   A   
+CHECK_DOWN_RET0 . . . . . . .  C ADDR   249DH   A   
+CHECK_ENTER . . . . . . . . .  C ADDR   24A0H   A   
+CHECK_ENTER_LOOP. . . . . . .  C ADDR   24A5H   A   
+CHECK_ENTER_LOOP2 . . . . . .  C ADDR   24A7H   A   
+CHECK_ENTER_RET0. . . . . . .  C ADDR   24B5H   A   
+CKCON0. . . . . . . . . . . .  D ADDR   008FH   A   
+CKCON1. . . . . . . . . . . .  D ADDR   00AFH   A   
+CKSEL . . . . . . . . . . . .  D ADDR   0085H   A   
+CL. . . . . . . . . . . . . .  D ADDR   00E9H   A   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    26
+
+CLR2L . . . . . . . . . . . .  C ADDR   2700H   A   
+CLR2L1. . . . . . . . . . . .  C ADDR   270AH   A   
+CMOD. . . . . . . . . . . . .  D ADDR   00D9H   A   
+CONTROLE_TEMPERATURA. . . . .  C ADDR   2262H   A   
+CONTROLE_TEMPERATURA_DESCENDO  C ADDR   22BBH   A   
+CONTROLE_TEMPERATURA_SUBINDO.  C ADDR   2280H   A   
+CP_RL2. . . . . . . . . . . .  B ADDR   00C8H.0 A   
+CR. . . . . . . . . . . . . .  B ADDR   00D8H.6 A   
+CRYSTAL . . . . . . . . . . .  N NUMB   3600H   A   
+CUR1. . . . . . . . . . . . .  C ADDR   275EH   A   
+CUR_OFF . . . . . . . . . . .  C ADDR   275CH   A   
+CUR_ON. . . . . . . . . . . .  C ADDR   2758H   A   
+C_T2. . . . . . . . . . . . .  B ADDR   00C8H.1 A   
+DEC_HORA. . . . . . . . . . .  C ADDR   247CH   A   
+DEC_MIN . . . . . . . . . . .  C ADDR   247EH   A   
+DEC_SEG . . . . . . . . . . .  C ADDR   2480H   A   
+DESLIGAR_RTC. . . . . . . . .  C ADDR   23ABH   A   
+DPH . . . . . . . . . . . . .  D ADDR   0083H   A   
+DPL . . . . . . . . . . . . .  D ADDR   0082H   A   
+EA. . . . . . . . . . . . . .  B ADDR   00A8H.7 A   
+EC. . . . . . . . . . . . . .  B ADDR   00A8H.6 A   
+EECON . . . . . . . . . . . .  D ADDR   00D2H   A   
+EP0INT. . . . . . . . . . . .  B ADDR   00F8H.0 A   
+EP1INT. . . . . . . . . . . .  B ADDR   00F8H.1 A   
+EP2INT. . . . . . . . . . . .  B ADDR   00F8H.2 A   
+EP3INT. . . . . . . . . . . .  B ADDR   00F8H.3 A   
+EP4INT. . . . . . . . . . . .  B ADDR   00F8H.4 A   
+EP5INT. . . . . . . . . . . .  B ADDR   00F8H.5 A   
+EP6INT. . . . . . . . . . . .  B ADDR   00F8H.6 A   
+ES. . . . . . . . . . . . . .  B ADDR   00A8H.4 A   
+ESCD1 . . . . . . . . . . . .  C ADDR   272CH   A   
+ESCDADO . . . . . . . . . . .  C ADDR   2719H   A   
+ESCI1 . . . . . . . . . . . .  C ADDR   26E8H   A   
+ESCINST . . . . . . . . . . .  C ADDR   26D7H   A   
+ESCREVE . . . . . . . . . . .  C ADDR   222CH   A   
+ESC_S . . . . . . . . . . . .  C ADDR   2751H   A   
+ESC_STR1. . . . . . . . . . .  C ADDR   2747H   A   
+ESC_STR2. . . . . . . . . . .  C ADDR   274DH   A   
+ET0 . . . . . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1 . . . . . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2 . . . . . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0 . . . . . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1 . . . . . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2 . . . . . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2. . . . . . . . . . . . .  B ADDR   00C8H.6 A   
+EXIT_RTC. . . . . . . . . . .  C ADDR   2485H   A   
+E_LCD . . . . . . . . . . . .  B ADDR   00A0H.7 A   
+FCON. . . . . . . . . . . . .  D ADDR   00D1H   A   
+FE_SM0. . . . . . . . . . . .  B ADDR   0098H.7 A   
+FLAG. . . . . . . . . . . . .  N NUMB   0057H   A   
+FTH_DE_SEGUNDO. . . . . . . .  N NUMB   001CH   A   
+GOTOXY. . . . . . . . . . . .  C ADDR   26EEH   A   
+GT1 . . . . . . . . . . . . .  C ADDR   26F7H   A   
+HORAS . . . . . . . . . . . .  N NUMB   0046H   A   
+IE0_. . . . . . . . . . . . .  B ADDR   0088H.1 A   
+IE1_. . . . . . . . . . . . .  B ADDR   0088H.3 A   
+IEN0. . . . . . . . . . . . .  D ADDR   00A8H   A   
+IEN1. . . . . . . . . . . . .  D ADDR   00B1H   A   
+IMPRIME_ALIMENTO. . . . . . .  C ADDR   2370H   A   
+IMPRIME_PONTO . . . . . . . .  C ADDR   2398H   A   
+INICIALIZAR_VARIAVEIS . . . .  C ADDR   23B4H   A   
+INICIAR_OPERACAO. . . . . . .  C ADDR   221DH   A   
+INICIAR_RTC . . . . . . . . .  C ADDR   239BH   A   
+INICIA_VOLTA. . . . . . . . .  C ADDR   23D9H   A   
+INICIO. . . . . . . . . . . .  C ADDR   21D1H   A   
+INIDISP . . . . . . . . . . .  C ADDR   26B8H   A   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    27
+
+IPH0. . . . . . . . . . . . .  D ADDR   00B7H   A   
+IPH1. . . . . . . . . . . . .  D ADDR   00B3H   A   
+IPL0. . . . . . . . . . . . .  D ADDR   00B8H   A   
+IPL1. . . . . . . . . . . . .  D ADDR   00B2H   A   
+IT0 . . . . . . . . . . . . .  B ADDR   0088H.0 A   
+IT1 . . . . . . . . . . . . .  B ADDR   0088H.2 A   
+KBE . . . . . . . . . . . . .  D ADDR   009DH   A   
+KBF . . . . . . . . . . . . .  D ADDR   009EH   A   
+KBLS. . . . . . . . . . . . .  D ADDR   009CH   A   
+LEDAM . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+LEDCON. . . . . . . . . . . .  D ADDR   00F1H   A   
+LEDVD . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+LEDVM . . . . . . . . . . . .  B ADDR   0090H.4 A   
+LEITURA_ADC . . . . . . . . .  C ADDR   241CH   A   
+LOOP_ALIMENTOS. . . . . . . .  C ADDR   21DFH   A   
+LOOP_FLAG . . . . . . . . . .  C ADDR   22A0H   A   
+LOOP_FLAG2. . . . . . . . . .  C ADDR   22DBH   A   
+LOOP_INICIO_PONTO . . . . . .  C ADDR   21EDH   A   
+LOOP_PONTO. . . . . . . . . .  C ADDR   21F5H   A   
+MINUTOS . . . . . . . . . . .  N NUMB   0045H   A   
+MSTR1 . . . . . . . . . . . .  C ADDR   273CH   A   
+MSTR21. . . . . . . . . . . .  C ADDR   2746H   A   
+MSTRING . . . . . . . . . . .  C ADDR   2732H   A   
+MSTRINGX. . . . . . . . . . .  C ADDR   273DH   A   
+NAO_ESCREVE . . . . . . . . .  C ADDR   223DH   A   
+NOVO_SEGUNDO. . . . . . . . .  N NUMB   0059H   A   
+NUM_ALIMENTO. . . . . . . . .  N NUMB   0004H   A   
+P0. . . . . . . . . . . . . .  D ADDR   0080H   A   
+P0_0. . . . . . . . . . . . .  B ADDR   0080H.0 A   
+P0_1. . . . . . . . . . . . .  B ADDR   0080H.1 A   
+P0_2. . . . . . . . . . . . .  B ADDR   0080H.2 A   
+P0_3. . . . . . . . . . . . .  B ADDR   0080H.3 A   
+P0_4. . . . . . . . . . . . .  B ADDR   0080H.4 A   
+P0_5. . . . . . . . . . . . .  B ADDR   0080H.5 A   
+P0_6. . . . . . . . . . . . .  B ADDR   0080H.6 A   
+P0_7. . . . . . . . . . . . .  B ADDR   0080H.7 A   
+P1. . . . . . . . . . . . . .  D ADDR   0090H   A   
+P1_0. . . . . . . . . . . . .  B ADDR   0090H.0 A   
+P1_1. . . . . . . . . . . . .  B ADDR   0090H.1 A   
+P1_2. . . . . . . . . . . . .  B ADDR   0090H.2 A   
+P1_3. . . . . . . . . . . . .  B ADDR   0090H.3 A   
+P1_4. . . . . . . . . . . . .  B ADDR   0090H.4 A   
+P1_5. . . . . . . . . . . . .  B ADDR   0090H.5 A   
+P1_6. . . . . . . . . . . . .  B ADDR   0090H.6 A   
+P1_7. . . . . . . . . . . . .  B ADDR   0090H.7 A   
+P2. . . . . . . . . . . . . .  D ADDR   00A0H   A   
+P2_0. . . . . . . . . . . . .  B ADDR   00A0H.0 A   
+P2_1. . . . . . . . . . . . .  B ADDR   00A0H.1 A   
+P2_2. . . . . . . . . . . . .  B ADDR   00A0H.2 A   
+P2_3. . . . . . . . . . . . .  B ADDR   00A0H.3 A   
+P2_4. . . . . . . . . . . . .  B ADDR   00A0H.4 A   
+P2_5. . . . . . . . . . . . .  B ADDR   00A0H.5 A   
+P2_6. . . . . . . . . . . . .  B ADDR   00A0H.6 A   
+P2_7. . . . . . . . . . . . .  B ADDR   00A0H.7 A   
+P3. . . . . . . . . . . . . .  D ADDR   00B0H   A   
+P3_0. . . . . . . . . . . . .  B ADDR   00B0H.0 A   
+P3_1. . . . . . . . . . . . .  B ADDR   00B0H.1 A   
+P3_2. . . . . . . . . . . . .  B ADDR   00B0H.2 A   
+P3_3. . . . . . . . . . . . .  B ADDR   00B0H.3 A   
+P3_4. . . . . . . . . . . . .  B ADDR   00B0H.4 A   
+P3_5. . . . . . . . . . . . .  B ADDR   00B0H.5 A   
+P3_6. . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+P3_7. . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+P4. . . . . . . . . . . . . .  D ADDR   00C0H   A   
+P4_0. . . . . . . . . . . . .  B ADDR   00C0H.0 A   
+P4_1. . . . . . . . . . . . .  B ADDR   00C0H.1 A   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    28
+
+PCON. . . . . . . . . . . . .  D ADDR   0087H   A   
+PEGA_TEMPO_TEMPERATURA. . . .  C ADDR   2203H   A   
+PLLCON. . . . . . . . . . . .  D ADDR   00A3H   A   
+PLLDIV. . . . . . . . . . . .  D ADDR   00A4H   A   
+PONTO_ATUAL . . . . . . . . .  N NUMB   0041H   A   
+PONTO_STR . . . . . . . . . .  C ADDR   2380H   A   
+PPCL. . . . . . . . . . . . .  B ADDR   00B8H.6 A   
+PROXIMO_ALIMENTO. . . . . . .  C ADDR   2343H   A   
+PROXIMO_PONTO . . . . . . . .  C ADDR   2373H   A   
+PROX_0. . . . . . . . . . . .  C ADDR   2358H   A   
+PROX_0_PONTO. . . . . . . . .  C ADDR   2388H   A   
+PROX_1. . . . . . . . . . . .  C ADDR   2360H   A   
+PROX_1_PONTO. . . . . . . . .  C ADDR   2390H   A   
+PROX_2. . . . . . . . . . . .  C ADDR   2368H   A   
+PROX_2_PONTO. . . . . . . . .  C ADDR   2398H   A   
+PROX_3. . . . . . . . . . . .  C ADDR   2370H   A   
+PSL . . . . . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW . . . . . . . . . . . . .  D ADDR   00D0H   A   
+PT0L. . . . . . . . . . . . .  B ADDR   00B8H.1 A   
+PT2L. . . . . . . . . . . . .  B ADDR   00B8H.5 A   
+PTIL. . . . . . . . . . . . .  B ADDR   00B8H.3 A   
+PX0L. . . . . . . . . . . . .  B ADDR   00B8H.0 A   
+PXIL. . . . . . . . . . . . .  B ADDR   00B8H.2 A   
+QUANTA. . . . . . . . . . . .  N NUMB   0028H   A   
+RB8 . . . . . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H. . . . . . . . . . . .  D ADDR   00CBH   A   
+RCAP2L. . . . . . . . . . . .  D ADDR   00CAH   A   
+RCLK. . . . . . . . . . . . .  B ADDR   00C8H.5 A   
+REG_TO_ASCII. . . . . . . . .  C ADDR   23E8H   A   
+RELEASE_DOWN. . . . . . . . .  C ADDR   2499H   A   
+RELEASE_ENTER . . . . . . . .  C ADDR   24B1H   A   
+RELE_CONTROL. . . . . . . . .  B ADDR   00A0H.0 A   
+REN . . . . . . . . . . . . .  B ADDR   0098H.4 A   
+RESET_VALUE . . . . . . . . .  N NUMB   3CB0H   A   
+RI. . . . . . . . . . . . . .  B ADDR   0098H.0 A   
+RS. . . . . . . . . . . . . .  B ADDR   00A0H.5 A   
+RW. . . . . . . . . . . . . .  B ADDR   00A0H.6 A   
+SADDR . . . . . . . . . . . .  D ADDR   00A9H   A   
+SADEN . . . . . . . . . . . .  D ADDR   00B9H   A   
+SBUF. . . . . . . . . . . . .  D ADDR   0099H   A   
+SCON. . . . . . . . . . . . .  D ADDR   0098H   A   
+SEGUNDOS. . . . . . . . . . .  N NUMB   0044H   A   
+SM1 . . . . . . . . . . . . .  B ADDR   0098H.6 A   
+SM2 . . . . . . . . . . . . .  B ADDR   0098H.5 A   
+SP. . . . . . . . . . . . . .  D ADDR   0081H   A   
+SPCON . . . . . . . . . . . .  D ADDR   00C3H   A   
+SPDAT . . . . . . . . . . . .  D ADDR   00C5H   A   
+SPI_ADC_CS. . . . . . . . . .  B ADDR   0090H.1 A   
+SPI_CLK . . . . . . . . . . .  B ADDR   0090H.6 A   
+SPI_MISO. . . . . . . . . . .  B ADDR   0090H.5 A   
+SPI_MOSI. . . . . . . . . . .  B ADDR   0090H.7 A   
+SPI_R_INIT. . . . . . . . . .  C ADDR   242FH   A   
+SPI_R_TX. . . . . . . . . . .  C ADDR   2436H   A   
+SPI_R_TX_JMP0 . . . . . . . .  C ADDR   243EH   A   
+SPSTA . . . . . . . . . . . .  D ADDR   00C4H   A   
+SSADR . . . . . . . . . . . .  D ADDR   0096H   A   
+SSCON . . . . . . . . . . . .  D ADDR   0093H   A   
+SSCS. . . . . . . . . . . . .  D ADDR   0094H   A   
+SSDAT . . . . . . . . . . . .  D ADDR   0095H   A   
+STR_2P0 . . . . . . . . . . .  N NUMB   0052H   A   
+STR_2P1 . . . . . . . . . . .  N NUMB   0055H   A   
+STR_CARNE . . . . . . . . . .  C ADDR   2122H   A   
+STR_CARNE_AP. . . . . . . . .  C ADDR   2197H   A   
+STR_CARNE_BP. . . . . . . . .  C ADDR   21A8H   A   
+STR_CARNE_MP. . . . . . . . .  C ADDR   2186H   A   
+STR_CLR . . . . . . . . . . .  C ADDR   2111H   A   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    29
+
+STR_FRANGO. . . . . . . . . .  C ADDR   2154H   A   
+STR_HRS . . . . . . . . . . .  N NUMB   0050H   A   
+STR_MIN . . . . . . . . . . .  N NUMB   0053H   A   
+STR_PEIXE . . . . . . . . . .  C ADDR   213BH   A   
+STR_S51 . . . . . . . . . . .  C ADDR   2100H   A   
+STR_SEG . . . . . . . . . . .  N NUMB   0056H   A   
+STR_TEMP. . . . . . . . . . .  N NUMB   0048H   A   
+STR_TESTE . . . . . . . . . .  C ADDR   216DH   A   
+SW_DOWN . . . . . . . . . . .  B ADDR   00B0H.4 A   
+SW_ENTER. . . . . . . . . . .  B ADDR   00B0H.2 A   
+T2CON . . . . . . . . . . . .  D ADDR   00C8H   A   
+T2MOD . . . . . . . . . . . .  D ADDR   00C9H   A   
+TABELA_TEMPERATURA. . . . . .  C ADDR   21C5H   A   
+TABELA_TEMPO. . . . . . . . .  C ADDR   21B9H   A   
+TABLE_LM35_HIGH_TO_BCD. . . .  C ADDR   25B8H   A   
+TABLE_LM35_LOW_TO_BCD . . . .  C ADDR   24B8H   A   
+TB8 . . . . . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK. . . . . . . . . . . . .  B ADDR   00C8H.4 A   
+TCON. . . . . . . . . . . . .  D ADDR   0088H   A   
+TEMPERATURA_ABAIXO0 . . . . .  C ADDR   228DH   A   
+TEMPERATURA_ABAIXO1 . . . . .  C ADDR   22A8H   A   
+TEMPERATURA_ABAIXO2 . . . . .  C ADDR   22D0H   A   
+TEMPERATURA_ABAIXO3 . . . . .  C ADDR   22E3H   A   
+TEMPERATURA_ACIMA0. . . . . .  C ADDR   2295H   A   
+TEMPERATURA_ACIMA1. . . . . .  C ADDR   22B0H   A   
+TEMPERATURA_ACIMA2. . . . . .  C ADDR   22C8H   A   
+TEMPERATURA_ACIMA3. . . . . .  C ADDR   22EBH   A   
+TEMPERATURA_ALVO. . . . . . .  N NUMB   0042H   A   
+TEMPERATURA_CARNE . . . . . .  C ADDR   21C5H   A   
+TEMPERATURA_FRANGO. . . . . .  C ADDR   21CBH   A   
+TEMPERATURA_LCD . . . . . . .  C ADDR   22F6H   A   
+TEMPERATURA_MAIOR . . . . . .  C ADDR   2275H   A   
+TEMPERATURA_MENOR . . . . . .  C ADDR   226AH   A   
+TEMPERATURA_PEIXE . . . . . .  C ADDR   21C8H   A   
+TEMPERATURA_TESTE . . . . . .  C ADDR   21CEH   A   
+TEMPO_ALVO. . . . . . . . . .  N NUMB   0043H   A   
+TEMPO_CARNE . . . . . . . . .  C ADDR   21B9H   A   
+TEMPO_FRANGO. . . . . . . . .  C ADDR   21BFH   A   
+TEMPO_PEIXE . . . . . . . . .  C ADDR   21BCH   A   
+TEMPO_TESTE . . . . . . . . .  C ADDR   21C2H   A   
+TEMP_ADC_LSB. . . . . . . . .  N NUMB   0032H   A   
+TEMP_ADC_MSB. . . . . . . . .  N NUMB   0031H   A   
+TF0 . . . . . . . . . . . . .  B ADDR   0088H.5 A   
+TF1 . . . . . . . . . . . . .  B ADDR   0088H.7 A   
+TF2 . . . . . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0 . . . . . . . . . . . . .  D ADDR   008CH   A   
+TH1 . . . . . . . . . . . . .  D ADDR   008DH   A   
+TH2 . . . . . . . . . . . . .  D ADDR   00CDH   A   
+TI. . . . . . . . . . . . . .  B ADDR   0098H.1 A   
+TICKS . . . . . . . . . . . .  N NUMB   0047H   A   
+TIMER0_IRQ. . . . . . . . . .  C ADDR   2458H   A   
+TL0 . . . . . . . . . . . . .  D ADDR   008AH   A   
+TL1 . . . . . . . . . . . . .  D ADDR   008BH   A   
+TL2 . . . . . . . . . . . . .  D ADDR   00CCH   A   
+TMOD. . . . . . . . . . . . .  D ADDR   0089H   A   
+TMRCYCLE. . . . . . . . . . .  N NUMB   000CH   A   
+TMR_SEC . . . . . . . . . . .  N NUMB   0480H   A   
+TR0 . . . . . . . . . . . . .  B ADDR   0088H.4 A   
+TR1 . . . . . . . . . . . . .  B ADDR   0088H.6 A   
+TR2 . . . . . . . . . . . . .  B ADDR   00C8H.2 A   
+UBYCTHX . . . . . . . . . . .  D ADDR   00E3H   A   
+UBYCTLX . . . . . . . . . . .  D ADDR   00E2H   A   
+UDPADDH . . . . . . . . . . .  D ADDR   00D7H   A   
+UDPADDL . . . . . . . . . . .  D ADDR   00D6H   A   
+UEPCONX . . . . . . . . . . .  D ADDR   00D4H   A   
+UEPDATX . . . . . . . . . . .  D ADDR   00CFH   A   
+A51 MACRO ASSEMBLER  SOUSVIDE51                                                           12/09/2015 17:50:32 PAGE    30
+
+UEPIEN. . . . . . . . . . . .  D ADDR   00C2H   A   
+UEPINT. . . . . . . . . . . .  D ADDR   00F8H   A   
+UEPNUM. . . . . . . . . . . .  D ADDR   00C7H   A   
+UEPRST. . . . . . . . . . . .  D ADDR   00D5H   A   
+UEPSTAX . . . . . . . . . . .  D ADDR   00CEH   A   
+UFNUMH. . . . . . . . . . . .  D ADDR   00BBH   A   
+UFNUML. . . . . . . . . . . .  D ADDR   00BAH   A   
+USBADDR . . . . . . . . . . .  D ADDR   00C6H   A   
+USBCON. . . . . . . . . . . .  D ADDR   00BCH   A   
+USBIEN. . . . . . . . . . . .  D ADDR   00BEH   A   
+USBINT. . . . . . . . . . . .  D ADDR   00BDH   A   
+WDTPRG. . . . . . . . . . . .  D ADDR   00A7H   A   
+WDTRST. . . . . . . . . . . .  D ADDR   00A6H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,937 @@
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: E:\Keil_v5\C51\BIN\A51.EXE C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51 NOMOD51 SET(SMALL) DE
+                      BUG PRINT(.\Laboratorio1.lst) OBJECT(.\Laboratorio1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+2000                   1     ORG 2000H
+2000 804A              2     JMP INICIO
+                       3     ;#include <at89c5131.h>
+                +1     4     
+                +1     5     
+                +1     6     
+                +1     7     
+                +1     8     
+                +1     9     
+                +1    10     
+                +1    11     
+                +1    12     
+                +1    13     
+                +1    14     
+                +1    15     
+                +1    16     
+                +1    17     
+                +1    18     
+                +1    19     
+                +1    20     
+                +1    21     
+                +1    22     
+                +1    23     
+                +1    24     
+                +1    25     
+                +1    26     
+                +1    27     
+                +1    28     
+                +1    29     
+                +1    30     
+                +1    31     
+                +1    32     
+  00E0          +1    33     sfr ACC = 0xE0 ;        /* Sfr ( ACC, bit addressable)*/
+  00F0          +1    34     sfr B = 0xF0 ;        /* Sfr ( B,   bit addressable)*/
+  00D0          +1    35     sfr PSW = 0xD0 ;        /* Sfr ( PSW, bit addressable)*/
+  0081          +1    36     sfr SP = 0x81 ;
+  0082          +1    37     sfr DPL = 0x82 ;
+  0083          +1    38     sfr DPH = 0x83 ;
+                +1    39     
+                +1    40     
+                +1    41     
+                +1    42     
+                +1    43     
+                +1    44     
+  0080          +1    45     sfr P0 = 0x80 ;        /* Sfr ( P0, bit addressable)*/
+                +1    46     
+  0087          +1    47     sbit P0_7 = P0 ^ 7 ;
+  0086          +1    48     sbit P0_6 = P0 ^ 6 ;
+  0085          +1    49     sbit P0_5 = P0 ^ 5 ;
+  0084          +1    50     sbit P0_4 = P0 ^ 4 ;
+  0083          +1    51     sbit P0_3 = P0 ^ 3 ;
+  0082          +1    52     sbit P0_2 = P0 ^ 2 ;
+  0081          +1    53     sbit P0_1 = P0 ^ 1 ;
+  0080          +1    54     sbit P0_0 = P0 ^ 0 ;
+                +1    55     
+  0090          +1    56     sfr P1 = 0x90 ;        /* Sfr ( P1, bit addressable)*/
+                +1    57     
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     2
+
+  0097          +1    58     sbit P1_7 = P1 ^ 7 ;
+  0096          +1    59     sbit P1_6 = P1 ^ 6 ;
+  0095          +1    60     sbit P1_5 = P1 ^ 5 ;
+  0094          +1    61     sbit P1_4 = P1 ^ 4 ;
+  0093          +1    62     sbit P1_3 = P1 ^ 3 ;
+  0092          +1    63     sbit P1_2 = P1 ^ 2 ;
+  0091          +1    64     sbit P1_1 = P1 ^ 1 ;
+  0090          +1    65     sbit P1_0 = P1 ^ 0 ;
+                +1    66     
+  00A0          +1    67     sfr P2 = 0xA0 ;        /* Sfr ( P2, bit addressable)*/
+                +1    68     
+  00A7          +1    69     sbit P2_7 = P2 ^ 7 ;
+  00A6          +1    70     sbit P2_6 = P2 ^ 6 ;
+  00A5          +1    71     sbit P2_5 = P2 ^ 5 ;
+  00A4          +1    72     sbit P2_4 = P2 ^ 4 ;
+  00A3          +1    73     sbit P2_3 = P2 ^ 3 ;
+  00A2          +1    74     sbit P2_2 = P2 ^ 2 ;
+  00A1          +1    75     sbit P2_1 = P2 ^ 1 ;
+  00A0          +1    76     sbit P2_0 = P2 ^ 0 ;
+                +1    77     
+  00B0          +1    78     sfr P3 = 0xB0 ;        /* Sfr ( P3, bit addressable)*/
+                +1    79     
+  00B7          +1    80     sbit P3_7 = P3 ^ 7 ;
+  00B6          +1    81     sbit P3_6 = P3 ^ 6 ;
+  00B5          +1    82     sbit P3_5 = P3 ^ 5 ;
+  00B4          +1    83     sbit P3_4 = P3 ^ 4 ;
+  00B3          +1    84     sbit P3_3 = P3 ^ 3 ;
+  00B2          +1    85     sbit P3_2 = P3 ^ 2 ;
+  00B1          +1    86     sbit P3_1 = P3 ^ 1 ;
+  00B0          +1    87     sbit P3_0 = P3 ^ 0 ;
+                +1    88     
+  00C0          +1    89     sfr P4 = 0xC0 ;        /* Sfr ( P4, bit addressable)*/
+                +1    90     
+  00C1          +1    91     sbit P4_1 = P4 ^ 1 ;
+  00C0          +1    92     sbit P4_0 = P4 ^ 0 ;
+                +1    93     
+                +1    94     
+                +1    95     
+                +1    96     
+  008C          +1    97     sfr TH0 = 0x8C ; 
+  008A          +1    98     sfr TL0 = 0x8A ;
+  008D          +1    99     sfr TH1 = 0x8D ;
+  008B          +1   100     sfr TL1 = 0x8B ;
+  00CD          +1   101     sfr TH2 = 0xCD ;
+  00CC          +1   102     sfr TL2 = 0xCC ;
+  0088          +1   103     sfr TCON = 0x88 ;        /* Sfr ( TCON,  bit addressable)*/
+  0089          +1   104     sfr TMOD = 0x89 ;
+  00C8          +1   105     sfr T2CON = 0xC8 ;        /* Sfr ( T2CON, bit addressable)*/
+  00C9          +1   106     sfr T2MOD = 0xC9 ;
+  00CB          +1   107     sfr RCAP2H = 0xCB ;
+  00CA          +1   108     sfr RCAP2L = 0xCA ;
+  00A6          +1   109     sfr WDTRST = 0xA6 ;
+  00A7          +1   110     sfr WDTPRG = 0xA7 ;
+                +1   111     
+                +1   112                                 
+  008F          +1   113     sbit TF1 = TCON ^ 7 ;
+  008E          +1   114     sbit TR1 = TCON ^ 6 ;
+  008D          +1   115     sbit TF0 = TCON ^ 5 ;
+  008C          +1   116     sbit TR0 = TCON ^ 4 ;
+  008B          +1   117     sbit IE1_ = TCON ^ 3 ;
+  008A          +1   118     sbit IT1 = TCON ^ 2 ;
+  0089          +1   119     sbit IE0_ = TCON ^ 1 ;
+  0088          +1   120     sbit IT0 = TCON ^ 0 ;
+                +1   121                                 
+  00CF          +1   122     sbit TF2 = T2CON ^ 7 ;
+  00CE          +1   123     sbit EXF2 = T2CON ^ 6 ;
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     3
+
+  00CD          +1   124     sbit RCLK = T2CON ^ 5 ;
+  00CC          +1   125     sbit TCLK = T2CON ^ 4 ;
+  00CB          +1   126     sbit EXEN2 = T2CON ^ 3 ;
+  00CA          +1   127     sbit TR2 = T2CON ^ 2 ;
+  00C9          +1   128     sbit C_T2 = T2CON ^ 1 ;
+  00C8          +1   129     sbit CP_RL2 = T2CON ^ 0 ;
+                +1   130     
+                +1   131     
+                +1   132     
+                +1   133     
+  0098          +1   134     sfr SCON = 0x98 ;
+  0099          +1   135     sfr SBUF = 0x99 ;
+  00B9          +1   136     sfr SADEN = 0xB9 ;
+  00A9          +1   137     sfr SADDR = 0xA9 ;
+                +1   138     
+  009F          +1   139     sbit FE_SM0 = SCON ^ 7 ;
+  009E          +1   140     sbit SM1 = SCON ^ 6 ;
+  009D          +1   141     sbit SM2 = SCON ^ 5 ;
+  009C          +1   142     sbit REN = SCON ^ 4 ;
+  009B          +1   143     sbit TB8 = SCON ^ 3 ;
+  009A          +1   144     sbit RB8 = SCON ^ 2 ;
+  0099          +1   145     sbit TI = SCON ^ 1 ;
+  0098          +1   146     sbit RI = SCON ^ 0 ;
+                +1   147     
+                +1   148     
+                +1   149     
+  009A          +1   150     sfr BRL = 0x9A ;
+  009B          +1   151     sfr BDRCON = 0x9B ;
+                +1   152     
+                +1   153     
+                +1   154     
+  00D8          +1   155     sfr CCON = 0xD8 ;      /* Sfr ( CCON, bit addressable)*/
+  00D9          +1   156     sfr CMOD = 0xD9 ;
+  00E9          +1   157     sfr CL = 0xE9 ;
+  00F9          +1   158     sfr CH = 0xF9 ;
+  00DA          +1   159     sfr CCAPM0 = 0xDA ;
+  00DB          +1   160     sfr CCAPM1 = 0xDB ;
+  00DC          +1   161     sfr CCAPM2 = 0xDC ;
+  00DD          +1   162     sfr CCAPM3 = 0xDD ;
+  00DE          +1   163     sfr CCAPM4 = 0xDE ;
+  00FA          +1   164     sfr CCAP0H = 0xFA ;
+  00FB          +1   165     sfr CCAP1H = 0xFB ;
+  00FC          +1   166     sfr CCAP2H = 0xFC ;
+  00FD          +1   167     sfr CCAP3H = 0xFD ;
+  00FE          +1   168     sfr CCAP4H = 0xFE ;
+  00EA          +1   169     sfr CCAP0L = 0xEA ;
+  00EB          +1   170     sfr CCAP1L = 0xEB ;
+  00EC          +1   171     sfr CCAP2L = 0xEC ;
+  00ED          +1   172     sfr CCAP3L = 0xED ;
+  00EE          +1   173     sfr CCAP4L = 0xEE ;
+                +1   174     
+                +1   175                                  
+  00DF          +1   176     sbit CF = CCON ^ 7 ;
+  00DE          +1   177     sbit CR = CCON ^ 6 ;
+  00DC          +1   178     sbit CCF4 = CCON ^ 4 ;
+  00DB          +1   179     sbit CCF3 = CCON ^ 3 ;
+  00DA          +1   180     sbit CCF2 = CCON ^ 2 ;
+  00D9          +1   181     sbit CCF1 = CCON ^ 1 ;
+  00D8          +1   182     sbit CCF0 = CCON ^ 0 ;
+                +1   183     
+                +1   184     
+                +1   185     
+                +1   186     
+  00A8          +1   187     sfr IEN0 = 0xA8 ;       /* Sfr ( IEN0,  bit addressable                 */
+  00B1          +1   188     sfr IEN1 = 0xB1 ;
+  00B8          +1   189     sfr IPL0 = 0xB8 ;       /* Sfr ( IPL0, bit addressable          */
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     4
+
+  00B7          +1   190     sfr IPH0 = 0xB7 ;
+  00B2          +1   191     sfr IPL1 = 0xB2 ;
+  00B3          +1   192     sfr IPH1 = 0xB3 ;
+                +1   193     
+                +1   194                                  
+  00AF          +1   195     sbit EA = IEN0 ^ 7 ;
+  00AE          +1   196     sbit EC = IEN0 ^ 6 ;
+  00AD          +1   197     sbit ET2 = IEN0 ^ 5 ;
+  00AC          +1   198     sbit ES = IEN0 ^ 4 ;
+  00AB          +1   199     sbit ET1 = IEN0 ^ 3 ;
+  00AA          +1   200     sbit EX1 = IEN0 ^ 2 ;
+  00A9          +1   201     sbit ET0 = IEN0 ^ 1 ;
+  00A8          +1   202     sbit EX0 = IEN0 ^ 0 ;
+                +1   203                                  
+  00BE          +1   204     sbit PPCL = IPL0 ^ 6 ;
+  00BD          +1   205     sbit PT2L = IPL0 ^ 5 ;
+  00BC          +1   206     sbit PSL = IPL0 ^ 4 ;
+  00BB          +1   207     sbit PTIL = IPL0 ^ 3 ;
+  00BA          +1   208     sbit PXIL = IPL0 ^ 2 ;
+  00B9          +1   209     sbit PT0L = IPL0 ^ 1 ;
+  00B8          +1   210     sbit PX0L = IPL0 ^ 0 ;
+                +1   211     
+                +1   212     
+                +1   213     
+  00A3          +1   214     sfr PLLCON = 0xA3 ;
+  00A4          +1   215     sfr PLLDIV = 0xA4 ;
+                +1   216     
+                +1   217     
+                +1   218     
+  009E          +1   219     sfr KBF = 0x9E ;
+  009D          +1   220     sfr KBE = 0x9D ;
+  009C          +1   221     sfr KBLS = 0x9C ;
+                +1   222     
+                +1   223     
+                +1   224     
+  0093          +1   225     sfr SSCON = 0x93 ;
+  0094          +1   226     sfr SSCS = 0x94 ;
+  0095          +1   227     sfr SSDAT = 0x95 ;
+  0096          +1   228     sfr SSADR = 0x96 ;
+                +1   229     
+                +1   230     
+                +1   231     
+  00C3          +1   232     sfr SPCON = 0xC3 ;
+  00C4          +1   233     sfr SPSTA = 0xC4 ;
+  00C5          +1   234     sfr SPDAT = 0xC5 ;
+                +1   235     
+                +1   236     
+                +1   237     
+  00BC          +1   238     sfr USBCON = 0xBC ;
+  00C6          +1   239     sfr USBADDR = 0xC6 ;
+  00BD          +1   240     sfr USBINT = 0xBD ;
+  00BE          +1   241     sfr USBIEN = 0xBE ;
+  00C7          +1   242     sfr UEPNUM = 0xC7 ;
+  00D4          +1   243     sfr UEPCONX = 0xD4 ;
+  00CE          +1   244     sfr UEPSTAX = 0xCE ;
+  00D5          +1   245     sfr UEPRST = 0xD5 ;
+  00F8          +1   246     sfr UEPINT = 0xF8 ;         /* Sfr ( UEPINT, bit addressable) */
+  00C2          +1   247     sfr UEPIEN = 0xC2 ;
+  00CF          +1   248     sfr UEPDATX = 0xCF ;
+  00E2          +1   249     sfr UBYCTLX = 0xE2 ;
+  00E3          +1   250     sfr UBYCTHX = 0xE3 ;
+  00D6          +1   251     sfr UDPADDL = 0xD6 ;
+  00D7          +1   252     sfr UDPADDH = 0xD7 ;
+  00BA          +1   253     sfr UFNUML = 0xBA ;
+  00BB          +1   254     sfr UFNUMH = 0xBB ;
+                +1   255                                     
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     5
+
+  00FE          +1   256     sbit EP6INT = UEPINT ^ 6 ;
+  00FD          +1   257     sbit EP5INT = UEPINT ^ 5 ;
+  00FC          +1   258     sbit EP4INT = UEPINT ^ 4 ;
+  00FB          +1   259     sbit EP3INT = UEPINT ^ 3 ;
+  00FA          +1   260     sbit EP2INT = UEPINT ^ 2 ;
+  00F9          +1   261     sbit EP1INT = UEPINT ^ 1 ;
+  00F8          +1   262     sbit EP0INT = UEPINT ^ 0 ;
+                +1   263     
+                +1   264     
+                +1   265     
+  0087          +1   266     sfr PCON = 0x87 ;
+  008E          +1   267     sfr AUXR = 0x8E ;
+  00A2          +1   268     sfr AUXR1 = 0xA2 ;
+  008F          +1   269     sfr CKCON0 = 0x8F ;
+  00AF          +1   270     sfr CKCON1 = 0xAF ;
+  0085          +1   271     sfr CKSEL = 0x85 ;
+  00F1          +1   272     sfr LEDCON = 0xF1 ;
+  00D1          +1   273     sfr FCON = 0xD1 ;
+  00D2          +1   274     sfr EECON = 0xD2 ;
+                +1   275     
+                +1   276     
+                +1   277     
+                +1   278     
+                     279     
+                     280     ;#include <DisplayLed.a51>
+                     281     
+*** ERROR #A318 IN 282 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 4): can't open file 'DisplayLed.a51'
+  0094               282     L3              EQU     P1.4
+  0095               283     L2              EQU P1.5
+  0096               284     L1              EQU P1.6
+  0097               285     L0              EQU P1.7
+  0093               286     C0              EQU     P1.3
+  0092               287     C1              EQU     P1.2
+  0091               288     C2              EQU     P1.1
+  0090               289     C3              EQU     P1.0
+2002 7B00            290     MOV R3,#0       
+                     291     
+                     292     
+                     293     ;       ORG             2000H
+                     294     ;       CALL    INIDISP                 ;INICIALIZA DISPLAY
+                     295     ;       MOV     DPTR,#STR_UTFPR         ;STRING DA PRIMEIRA LINHA
+                     296     ;       CALL    ESC_STR1                ;ESCREVE NA PRIMEIRA LINHA
+                     297     ;       MOV     DPTR,#STR_MICROC        ;STRING DA SEGUNDA LINHA
+                     298     ;       CALL    ESC_STR2                ;ESCREVE NA SEGUNDA LINHA
+                     299     ;       JMP     $ 
+                     300     
+                     301     ; STRINGS TERMINADAS COM '00H'
+                     302     ;STR_UTFPR:
+                     303      ;      DB      '     UTFPR      ',00H
+                     304     ;STR_MICROC:
+                     305     ;       DB      'MICROCONTROLADOR',00H
+2004                 306     STR_DIGITE:
+2004 424F4D42        307             DB 'BOMBA ARMADA   ',00H
+2008 41204152                
+200C 4D414441                
+2010 20202000                
+2014                 308     STR_VALIDA:
+2014 424F4D42        309             DB 'BOMBA DESARMADA',00H
+2018 41204445                
+201C 5341524D                
+2020 41444100                
+2024                 310     STR_INVALIDA:
+2024 53454E48        311             DB 'SENHA ERRADA   ',00H
+2028 41204552                
+202C 52414441                
+2030 20202000                
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     6
+
+2034                 312     SENHA1:
+2034 31323334        313             DB '1234'
+2038                 314     SENHA2:
+2038 35363738        315             DB '5678'
+203C                 316     STR_BOOM:
+203C 424F4D42        317             DB 'BOMBA EXPLODIU ',00H
+2040 41204558                
+2044 504C4F44                
+2048 49552000                
+                     318     
+                     319     
+                     320                     
+204C                 321     INICIO:
+                     322             ;MOV 0x3100,#0x00
+                     323             ;MOV 0x3101,#0x00
+                     324     ;       MOV 0x3102,#0x00
+                     325             ;MOV 0x3103,#0x00
+                     326             ;MOV 0x3104,#0x00
+204C                 327             CALL INIDISP
+*** ______________________________________^
+*** ERROR #A45 IN 327 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 52): UNDEFINED SYMBOL (PASS-2)
+204F 7C40            328             MOV R4, #0x40   ;endereco onde é guardada a senha lida
+2051 7D01            329             MOV R5, #1              ;flag para senha correta1
+2053 7F01            330             MOV R7, #1              ;flag para senha correta2
+2055 7E00            331             MOV R6, #0              ; num de teclas lidas
+2057 902004          332             MOV     DPTR,#STR_DIGITE        ; APARECE NO DISPLAY 'DIGITE SUA SENHA'
+205A                 333             CALL    ESC_STR1
+*** _________________________________________^
+*** ERROR #A45 IN 333 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 58): UNDEFINED SYMBOL (PASS-2)
+                     334     
+205D 7801            335             MOV    R0,#01              ; POSICIONA CURSOR NA LINHA 2
+205F 7900            336         MOV    R1,#00
+2061                 337         CALL   GOTOXY
+*** ____________________________________^
+*** ERROR #A45 IN 337 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 62): UNDEFINED SYMBOL (PASS-2)
+                     338             
+                     339             ; INICIO DA LEITURA DAS TECLAS
+2064                 340             lendo:
+2064 11EB            341             CALL espera_tecla       ;esperando tecla ser digitada 
+2066 E8              342             MOV A,R0                        ; R0 tem a tecla digitada -> 0x3A corresponde a *, 0x3C corresponde a # (tabela ascii)
+2067 B43A0B          343             CJNE A,#0x3A,teste_tecla  ;testa para ver se o * foi apertado
+206A 7C40            344             MOV R4,#0x40    
+206C                 345             CALL CLR2L              ;rotina que apaga a segunda linha do display 
+*** ______________________________________^
+*** ERROR #A45 IN 345 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 70): UNDEFINED SYMBOL (PASS-2)
+206F 7D01            346             MOV R5, #1              ;flag para senha correta1
+2071 7F01            347             MOV R7, #1              ;flag para senha correta2
+2073 80EF            348             JMP lendo
+                     349             
+2075                 350             teste_tecla:
+2075 B43C06          351             CJNE A,#0x3C,comparatecla ; verifica se a pessoa aperta # 
+2078 EF              352             MOV A,R7  
+2079 2D              353             ADD A,R5        ; verfica as duas senhas , joga para qual registrador (flag) está correta 
+207A 6044            354             JZ senha_errada
+207C 8055            355             JMP senha_correta
+                     356             
+207E                 357             comparatecla:
+207E 902034          358             MOV DPTR,#SENHA1
+2081 EE              359             MOV A,R6  ; valor da qtd de teclas digitadas 
+2082 93              360             MOVC A,@A+DPTR 
+2083 B50002          361             CJNE A,00h, tecla_errada1 ;comparando a tecla atual com seu valor correspondente na senha 1 , se pular senha 1 errada 
+2086 8003            362             JMP tecla_correta1
+                     363             
+2088                 364             tecla_errada1:
+2088 7D00            365             MOV R5,#0               ;marca a flag como zero         
+208A 0F              366             INC R7
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     7
+
+                     367             
+208B                 368             tecla_correta1:
+208B 902038          369             MOV DPTR,#SENHA2
+208E EE              370             MOV A,R6 ; valor da qtd de teclas digitadas 
+208F 93              371             MOVC A,@A+DPTR 
+2090 B50002          372             CJNE A,00h, tecla_errada2 ;comparando a tecla atual com seu valor correspondente na senha 1 , se pular senha 1 errada 
+2093 8002            373             JMP tecla_correta2
+                     374             
+2095                 375             tecla_errada2:
+2095 7F00            376             MOV R7,#0               ;marca a flag como zero 
+                     377             
+2097                 378             tecla_correta2: 
+2097 742A            379             MOV A,#0x2A             ;imprime asterisco
+2099                 380             CALL ESCDADO
+*** ______________________________________^
+*** ERROR #A45 IN 380 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 105): UNDEFINED SYMBOL (PASS-2)
+                     381             
+                     382     
+209C EE              383             MOV A,R6
+209D 04              384             INC A
+209E FE              385             MOV R6,A
+209F B405C2          386             CJNE A,#5,lendo ;volta para o inicio se passar de 4 digito a senha
+20A2 7E00            387             MOV R6,#0 ;se passar, zera a qtd digitada 
+20A4 7D00            388             MOV R5,#0 ;e zera a flag 
+20A6 7F00            389             MOV R7, #0
+20A8 80BA            390             jmp lendo
+                     391             
+20AA 80A0            392     JMP INICIO      
+                     393     
+                     394     
+                     395     
+                     396     ;******************************************************
+                     397     ; implanta o atraso no lcd
+                     398     ;******************************************************
+                     399     
+20AC                 400     atraso_2s:
+20AC 7908            401             MOV R1,#8
+20AE                 402             atraso_2s_1:
+20AE 7AFA            403             MOV     R2,#250          ;ESPERA 15ms
+20B0                 404             CALL    ATRASO_MS
+*** _________________________________________^
+*** ERROR #A45 IN 404 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 129): UNDEFINED SYMBOL (PASS-2)
+20B3 D9F9            405             DJNZ R1,atraso_2s_1
+20B5 22              406     ret
+                     407     
+20B6                 408     atraso_1s:
+20B6 7902            409             MOV R1,#2
+20B8                 410             atraso_1s_1:
+20B8 7AFA            411             MOV     R2,#250          ;ESPERA 15ms
+20BA                 412             CALL    ATRASO_MS
+*** _________________________________________^
+*** ERROR #A45 IN 412 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 137): UNDEFINED SYMBOL (PASS-2)
+20BD D9F9            413             DJNZ R1,atraso_1s_1
+20BF 22              414     ret
+                     415     
+                     416     
+                     417     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                     418     ;rotinas que imprimem as mensagens de senha errada e senhga correta
+                     419     
+20C0                 420     senha_errada:
+20C0                 421             CALL CLR2L
+*** ______________________________________^
+*** ERROR #A45 IN 421 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 146): UNDEFINED SYMBOL (PASS-2)
+                     422     
+20C3 902024          423             MOV     DPTR,#STR_INVALIDA      
+20C6                 424             CALL    ESC_STR1
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     8
+
+*** _________________________________________^
+*** ERROR #A45 IN 424 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 149): UNDEFINED SYMBOL (PASS-2)
+20C9 7A00            425             MOV R2, #0
+20CB                 426             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 426 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 151): UNDEFINED SYMBOL (PASS-2)
+20CE 11AC            427             call atraso_2s
+20D0 0B              428             INC R3
+20D1 014C            429             JMP INICIO
+                     430     
+20D3                 431     senha_correta:
+20D3                 432             CALL CLR2L
+*** ______________________________________^
+*** ERROR #A45 IN 432 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 157): UNDEFINED SYMBOL (PASS-2)
+                     433     
+20D6 902014          434             MOV     DPTR,#STR_VALIDA        
+20D9                 435             CALL    ESC_STR1
+*** _________________________________________^
+*** ERROR #A45 IN 435 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 160): UNDEFINED SYMBOL (PASS-2)
+20DC                 436             SETB LEDAM
+*** ______________________________________^
+*** ERROR #A45 IN 436 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 161): UNDEFINED SYMBOL (PASS-2)
+20DE                 437             SETB LEDVM
+*** ______________________________________^
+*** ERROR #A45 IN 437 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 162): UNDEFINED SYMBOL (PASS-2)
+20E0                 438             SETB LEDVD
+*** ______________________________________^
+*** ERROR #A45 IN 438 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 163): UNDEFINED SYMBOL (PASS-2)
+20E2 7A00            439             MOV R2, #0
+20E4                 440             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 440 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 165): UNDEFINED SYMBOL (PASS-2)
+20E7 11AC            441             call atraso_2s
+20E9 014C            442             JMP INICIO
+                     443             
+                     444     ;UTILIZA A E R0, RETORNA TECLA EM R0
+20EB                 445     espera_tecla:
+20EB 11FD            446             call pegar_tecla_raw ; espera soltar tecla
+20ED E8              447             MOV A,R0
+20EE 70FB            448             JNZ espera_tecla
+                     449                     
+20F0 11FD            450             call pegar_tecla_raw ;espera pressionar tecla
+20F2 E8              451             MOV A,R0
+20F3 60F6            452             JZ espera_tecla    
+                     453                                                             
+20F5 E8              454             MOV A,R0
+20F6 7A01            455             MOV R2,#1                       ; espera 1 ms
+20F8                 456             call ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 456 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 181): UNDEFINED SYMBOL (PASS-2)
+20FB F8              457             MOV R0,A
+                     458     
+                     459             
+20FC 22              460     RET
+                     461     
+                     462     
+                     463     ;*************************************************
+                     464     ; pegar_tecla_raw
+20FD                 465     pegar_tecla_raw:
+20FD BB0004          466             CJNE R3,#00,ERR0
+2100 314F            467             CALL LOOP1
+2102 800E            468             JMP GO
+2104                 469     ERR0:
+2104 BB0104          470             CJNE R3,#01,ERR1
+2107 3158            471             CALL LOOP05
+2109 8007            472             JMP GO
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE     9
+
+210B                 473     ERR1:
+210B BB0268          474             CJNE R3,#02,BOOM
+210E 3167            475             CALL LOOP025
+2110 8000            476             JMP GO
+2112                 477     GO:     
+2112 7590FF          478             MOV P1,#0xFF  ;seta linhas como entradas , nenhuma coluna tem zero
+2115 7801            479             MOV R0,#1
+2117 74F7            480             MOV A,#11110111B
+2119                 481             prox_var:       
+2119 F590            482             MOV P1,A        ; seta linhas como entrada e coluna 1 igual a 0
+211B 309717          483             JNB L0, LINHA1
+211E 309619          484             JNB L1, LINHA2
+2121 30951D          485             JNB L2, LINHA3
+2124 309421          486             JNB L3, LINHA4
+                     487             ;ninguem foi apertado, desloca A
+2127 03              488             RR A            ;Desloca o Acumulador à direita, ou seja vai para prox coluna
+2128 C0E0            489             PUSH ACC        ;pilha
+212A E8              490             MOV A,R0        
+212B 04              491             INC A           
+212C F8              492             MOV R0,A
+212D D0E0            493             POP ACC 
+                     494             
+212F B804E7          495             CJNE R0,#4, prox_var
+2132 7800            496             MOV R0,#0
+                     497             
+2134 22              498     RET
+                     499             
+                     500     ;******************************************************
+                     501     
+2135                 502     LINHA1:
+2135 E8              503             MOV A,R0
+2136 2430            504             ADD A,#48
+2138 F8              505             MOV R0,A
+2139 22              506             RET
+213A                 507     LINHA2:
+213A E8              508             MOV A,R0
+213B 2403            509             ADD A,#3
+213D 2430            510             ADD A,#48
+213F F8              511             MOV R0,A
+2140 22              512             RET
+2141                 513     LINHA3:
+2141 E8              514             MOV A,R0
+2142 2406            515             ADD A,#6
+2144 2430            516             ADD A,#48
+2146 F8              517             MOV R0,A
+2147 22              518             RET
+2148                 519     LINHA4: 
+2148 E8              520             MOV A,R0
+2149 2409            521             ADD A,#9
+214B 2430            522             ADD A,#48
+214D F8              523             MOV R0,A
+214E 22              524             RET
+                     525     
+214F                 526     LOOP1:  
+214F                 527             CLR LEDVD ;LEDs acesos em baixa.
+*** _____________________________________^
+*** ERROR #A45 IN 527 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 252): UNDEFINED SYMBOL (PASS-2)
+2151 11B6            528             CALL atraso_1s
+2153                 529             SETB LEDVD
+*** ______________________________________^
+*** ERROR #A45 IN 529 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 254): UNDEFINED SYMBOL (PASS-2)
+2155 11B6            530             CALL atraso_1s
+2157 22              531             RET
+                     532             
+2158                 533     LOOP05:
+2158                 534             CLR LEDVD
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    10
+
+*** _____________________________________^
+*** ERROR #A45 IN 534 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 259): UNDEFINED SYMBOL (PASS-2)
+215A 7AFA            535             MOV R2,#250
+215C                 536             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 536 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 261): UNDEFINED SYMBOL (PASS-2)
+215F                 537             SETB LEDVD
+*** ______________________________________^
+*** ERROR #A45 IN 537 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 262): UNDEFINED SYMBOL (PASS-2)
+2161 7AFA            538             MOV R2,#250
+2163                 539             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 539 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 264): UNDEFINED SYMBOL (PASS-2)
+2166 22              540             RET
+                     541             
+2167                 542     LOOP025:
+2167                 543             CLR LEDVD
+*** _____________________________________^
+*** ERROR #A45 IN 543 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 268): UNDEFINED SYMBOL (PASS-2)
+2169 7A7D            544             MOV R2,#125
+216B                 545             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 545 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 270): UNDEFINED SYMBOL (PASS-2)
+216E                 546             SETB LEDVD
+*** ______________________________________^
+*** ERROR #A45 IN 546 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 271): UNDEFINED SYMBOL (PASS-2)
+2170 7A7D            547             MOV R2,#125
+2172                 548             CALL ATRASO_MS
+*** ______________________________________^
+*** ERROR #A45 IN 548 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 273): UNDEFINED SYMBOL (PASS-2)
+2175 22              549             RET
+                     550             
+2176                 551     BOOM:
+2176 90203C          552             MOV     DPTR,#STR_BOOM  ;STRING DA SEGUNDA LINHA
+2179                 553         CALL    ESC_STR1
+*** _____________________________________^
+*** ERROR #A45 IN 553 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 278): UNDEFINED SYMBOL (PASS-2)
+217C 90203C          554             MOV     DPTR,#STR_BOOM  ;STRING DA SEGUNDA LINHA
+217F                 555         CALL    ESC_STR1    
+*** _____________________________________^
+*** ERROR #A45 IN 555 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 280): UNDEFINED SYMBOL (PASS-2)
+2182                 556             CLR LEDVD
+*** _____________________________________^
+*** ERROR #A45 IN 556 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 281): UNDEFINED SYMBOL (PASS-2)
+2184                 557             CLR LEDAM
+*** _____________________________________^
+*** ERROR #A45 IN 557 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 282): UNDEFINED SYMBOL (PASS-2)
+2186                 558             CLR LEDVM
+*** _____________________________________^
+*** ERROR #A45 IN 558 (C:\Users\Avell G1711 NEW\Desktop\Laboratorio1.a51, LINE 283): UNDEFINED SYMBOL (PASS-2)
+2188 11B6            559             CALL atraso_1s
+218A 11B6            560             CALL atraso_1s
+218C 014C            561             JMP INICIO
+                     562     END
+                                     
+                                     
+                                     
+                                     
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    11
+
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    12
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ATRASO_1S. . . . .  C ADDR   20B6H   A   
+ATRASO_1S_1. . . .  C ADDR   20B8H   A   
+ATRASO_2S. . . . .  C ADDR   20ACH   A   
+ATRASO_2S_1. . . .  C ADDR   20AEH   A   
+ATRASO_MS. . . . .    ----   -----       
+AUXR . . . . . . .  D ADDR   008EH   A   
+AUXR1. . . . . . .  D ADDR   00A2H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BDRCON . . . . . .  D ADDR   009BH   A   
+BOOM . . . . . . .  C ADDR   2176H   A   
+BRL. . . . . . . .  D ADDR   009AH   A   
+C0 . . . . . . . .  B ADDR   0090H.3 A   
+C1 . . . . . . . .  B ADDR   0090H.2 A   
+C2 . . . . . . . .  B ADDR   0090H.1 A   
+C3 . . . . . . . .  B ADDR   0090H.0 A   
+CCAP0H . . . . . .  D ADDR   00FAH   A   
+CCAP0L . . . . . .  D ADDR   00EAH   A   
+CCAP1H . . . . . .  D ADDR   00FBH   A   
+CCAP1L . . . . . .  D ADDR   00EBH   A   
+CCAP2H . . . . . .  D ADDR   00FCH   A   
+CCAP2L . . . . . .  D ADDR   00ECH   A   
+CCAP3H . . . . . .  D ADDR   00FDH   A   
+CCAP3L . . . . . .  D ADDR   00EDH   A   
+CCAP4H . . . . . .  D ADDR   00FEH   A   
+CCAP4L . . . . . .  D ADDR   00EEH   A   
+CCAPM0 . . . . . .  D ADDR   00DAH   A   
+CCAPM1 . . . . . .  D ADDR   00DBH   A   
+CCAPM2 . . . . . .  D ADDR   00DCH   A   
+CCAPM3 . . . . . .  D ADDR   00DDH   A   
+CCAPM4 . . . . . .  D ADDR   00DEH   A   
+CCF0 . . . . . . .  B ADDR   00D8H.0 A   
+CCF1 . . . . . . .  B ADDR   00D8H.1 A   
+CCF2 . . . . . . .  B ADDR   00D8H.2 A   
+CCF3 . . . . . . .  B ADDR   00D8H.3 A   
+CCF4 . . . . . . .  B ADDR   00D8H.4 A   
+CCON . . . . . . .  D ADDR   00D8H   A   
+CF . . . . . . . .  B ADDR   00D8H.7 A   
+CH . . . . . . . .  D ADDR   00F9H   A   
+CKCON0 . . . . . .  D ADDR   008FH   A   
+CKCON1 . . . . . .  D ADDR   00AFH   A   
+CKSEL. . . . . . .  D ADDR   0085H   A   
+CL . . . . . . . .  D ADDR   00E9H   A   
+CLR2L. . . . . . .    ----   -----       
+CMOD . . . . . . .  D ADDR   00D9H   A   
+COMPARATECLA . . .  C ADDR   207EH   A   
+CP_RL2 . . . . . .  B ADDR   00C8H.0 A   
+CR . . . . . . . .  B ADDR   00D8H.6 A   
+C_T2 . . . . . . .  B ADDR   00C8H.1 A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EC . . . . . . . .  B ADDR   00A8H.6 A   
+EECON. . . . . . .  D ADDR   00D2H   A   
+EP0INT . . . . . .  B ADDR   00F8H.0 A   
+EP1INT . . . . . .  B ADDR   00F8H.1 A   
+EP2INT . . . . . .  B ADDR   00F8H.2 A   
+EP3INT . . . . . .  B ADDR   00F8H.3 A   
+EP4INT . . . . . .  B ADDR   00F8H.4 A   
+EP5INT . . . . . .  B ADDR   00F8H.5 A   
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    13
+
+EP6INT . . . . . .  B ADDR   00F8H.6 A   
+ERR0 . . . . . . .  C ADDR   2104H   A   
+ERR1 . . . . . . .  C ADDR   210BH   A   
+ES . . . . . . . .  B ADDR   00A8H.4 A   
+ESCDADO. . . . . .    ----   -----       
+ESC_STR1 . . . . .    ----   -----       
+ESPERA_TECLA . . .  C ADDR   20EBH   A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . .  B ADDR   00C8H.6 A   
+FCON . . . . . . .  D ADDR   00D1H   A   
+FE_SM0 . . . . . .  B ADDR   0098H.7 A   
+GO . . . . . . . .  C ADDR   2112H   A   
+GOTOXY . . . . . .    ----   -----       
+IE0_ . . . . . . .  B ADDR   0088H.1 A   
+IE1_ . . . . . . .  B ADDR   0088H.3 A   
+IEN0 . . . . . . .  D ADDR   00A8H   A   
+IEN1 . . . . . . .  D ADDR   00B1H   A   
+INICIO . . . . . .  C ADDR   204CH   A   
+INIDISP. . . . . .    ----   -----       
+IPH0 . . . . . . .  D ADDR   00B7H   A   
+IPH1 . . . . . . .  D ADDR   00B3H   A   
+IPL0 . . . . . . .  D ADDR   00B8H   A   
+IPL1 . . . . . . .  D ADDR   00B2H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+KBE. . . . . . . .  D ADDR   009DH   A   
+KBF. . . . . . . .  D ADDR   009EH   A   
+KBLS . . . . . . .  D ADDR   009CH   A   
+L0 . . . . . . . .  B ADDR   0090H.7 A   
+L1 . . . . . . . .  B ADDR   0090H.6 A   
+L2 . . . . . . . .  B ADDR   0090H.5 A   
+L3 . . . . . . . .  B ADDR   0090H.4 A   
+LEDAM. . . . . . .    ----   -----       
+LEDCON . . . . . .  D ADDR   00F1H   A   
+LEDVD. . . . . . .    ----   -----       
+LEDVM. . . . . . .    ----   -----       
+LENDO. . . . . . .  C ADDR   2064H   A   
+LINHA1 . . . . . .  C ADDR   2135H   A   
+LINHA2 . . . . . .  C ADDR   213AH   A   
+LINHA3 . . . . . .  C ADDR   2141H   A   
+LINHA4 . . . . . .  C ADDR   2148H   A   
+LOOP025. . . . . .  C ADDR   2167H   A   
+LOOP05 . . . . . .  C ADDR   2158H   A   
+LOOP1. . . . . . .  C ADDR   214FH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P0_0 . . . . . . .  B ADDR   0080H.0 A   
+P0_1 . . . . . . .  B ADDR   0080H.1 A   
+P0_2 . . . . . . .  B ADDR   0080H.2 A   
+P0_3 . . . . . . .  B ADDR   0080H.3 A   
+P0_4 . . . . . . .  B ADDR   0080H.4 A   
+P0_5 . . . . . . .  B ADDR   0080H.5 A   
+P0_6 . . . . . . .  B ADDR   0080H.6 A   
+P0_7 . . . . . . .  B ADDR   0080H.7 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P1_0 . . . . . . .  B ADDR   0090H.0 A   
+P1_1 . . . . . . .  B ADDR   0090H.1 A   
+P1_2 . . . . . . .  B ADDR   0090H.2 A   
+P1_3 . . . . . . .  B ADDR   0090H.3 A   
+P1_4 . . . . . . .  B ADDR   0090H.4 A   
+P1_5 . . . . . . .  B ADDR   0090H.5 A   
+P1_6 . . . . . . .  B ADDR   0090H.6 A   
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    14
+
+P1_7 . . . . . . .  B ADDR   0090H.7 A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P2_0 . . . . . . .  B ADDR   00A0H.0 A   
+P2_1 . . . . . . .  B ADDR   00A0H.1 A   
+P2_2 . . . . . . .  B ADDR   00A0H.2 A   
+P2_3 . . . . . . .  B ADDR   00A0H.3 A   
+P2_4 . . . . . . .  B ADDR   00A0H.4 A   
+P2_5 . . . . . . .  B ADDR   00A0H.5 A   
+P2_6 . . . . . . .  B ADDR   00A0H.6 A   
+P2_7 . . . . . . .  B ADDR   00A0H.7 A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+P3_0 . . . . . . .  B ADDR   00B0H.0 A   
+P3_1 . . . . . . .  B ADDR   00B0H.1 A   
+P3_2 . . . . . . .  B ADDR   00B0H.2 A   
+P3_3 . . . . . . .  B ADDR   00B0H.3 A   
+P3_4 . . . . . . .  B ADDR   00B0H.4 A   
+P3_5 . . . . . . .  B ADDR   00B0H.5 A   
+P3_6 . . . . . . .  B ADDR   00B0H.6 A   
+P3_7 . . . . . . .  B ADDR   00B0H.7 A   
+P4 . . . . . . . .  D ADDR   00C0H   A   
+P4_0 . . . . . . .  B ADDR   00C0H.0 A   
+P4_1 . . . . . . .  B ADDR   00C0H.1 A   
+PCON . . . . . . .  D ADDR   0087H   A   
+PEGAR_TECLA_RAW. .  C ADDR   20FDH   A   
+PLLCON . . . . . .  D ADDR   00A3H   A   
+PLLDIV . . . . . .  D ADDR   00A4H   A   
+PPCL . . . . . . .  B ADDR   00B8H.6 A   
+PROX_VAR . . . . .  C ADDR   2119H   A   
+PSL. . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PT0L . . . . . . .  B ADDR   00B8H.1 A   
+PT2L . . . . . . .  B ADDR   00B8H.5 A   
+PTIL . . . . . . .  B ADDR   00B8H.3 A   
+PX0L . . . . . . .  B ADDR   00B8H.0 A   
+PXIL . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . .  B ADDR   00C8H.5 A   
+REN. . . . . . . .  B ADDR   0098H.4 A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SADDR. . . . . . .  D ADDR   00A9H   A   
+SADEN. . . . . . .  D ADDR   00B9H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SENHA1 . . . . . .  C ADDR   2034H   A   
+SENHA2 . . . . . .  C ADDR   2038H   A   
+SENHA_CORRETA. . .  C ADDR   20D3H   A   
+SENHA_ERRADA . . .  C ADDR   20C0H   A   
+SM1. . . . . . . .  B ADDR   0098H.6 A   
+SM2. . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . .  D ADDR   0081H   A   
+SPCON. . . . . . .  D ADDR   00C3H   A   
+SPDAT. . . . . . .  D ADDR   00C5H   A   
+SPSTA. . . . . . .  D ADDR   00C4H   A   
+SSADR. . . . . . .  D ADDR   0096H   A   
+SSCON. . . . . . .  D ADDR   0093H   A   
+SSCS . . . . . . .  D ADDR   0094H   A   
+SSDAT. . . . . . .  D ADDR   0095H   A   
+STR_BOOM . . . . .  C ADDR   203CH   A   
+STR_DIGITE . . . .  C ADDR   2004H   A   
+STR_INVALIDA . . .  C ADDR   2024H   A   
+STR_VALIDA . . . .  C ADDR   2014H   A   
+T2CON. . . . . . .  D ADDR   00C8H   A   
+T2MOD. . . . . . .  D ADDR   00C9H   A   
+TB8. . . . . . . .  B ADDR   0098H.3 A   
+A51 MACRO ASSEMBLER  LABORATORIO1                                                         12/04/2015 23:25:34 PAGE    15
+
+TCLK . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TECLA_CORRETA1 . .  C ADDR   208BH   A   
+TECLA_CORRETA2 . .  C ADDR   2097H   A   
+TECLA_ERRADA1. . .  C ADDR   2088H   A   
+TECLA_ERRADA2. . .  C ADDR   2095H   A   
+TESTE_TECLA. . . .  C ADDR   2075H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . .  B ADDR   00C8H.2 A   
+UBYCTHX. . . . . .  D ADDR   00E3H   A   
+UBYCTLX. . . . . .  D ADDR   00E2H   A   
+UDPADDH. . . . . .  D ADDR   00D7H   A   
+UDPADDL. . . . . .  D ADDR   00D6H   A   
+UEPCONX. . . . . .  D ADDR   00D4H   A   
+UEPDATX. . . . . .  D ADDR   00CFH   A   
+UEPIEN . . . . . .  D ADDR   00C2H   A   
+UEPINT . . . . . .  D ADDR   00F8H   A   
+UEPNUM . . . . . .  D ADDR   00C7H   A   
+UEPRST . . . . . .  D ADDR   00D5H   A   
+UEPSTAX. . . . . .  D ADDR   00CEH   A   
+UFNUMH . . . . . .  D ADDR   00BBH   A   
+UFNUML . . . . . .  D ADDR   00BAH   A   
+USBADDR. . . . . .  D ADDR   00C6H   A   
+USBCON . . . . . .  D ADDR   00BCH   A   
+USBIEN . . . . . .  D ADDR   00BEH   A   
+USBINT . . . . . .  D ADDR   00BDH   A   
+WDTPRG . . . . . .  D ADDR   00A7H   A   
+WDTRST . . . . . .  D ADDR   00A6H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 33 ERROR(S)
